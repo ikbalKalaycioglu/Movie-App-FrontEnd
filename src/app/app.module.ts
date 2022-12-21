@@ -18,6 +18,8 @@ import { FormsModule } from '@angular/forms';
 import { AllContentsComponent } from './Components/all-contents/all-contents.component';
 import { StarComponent } from './Components/star/star.component';
 import { DirectorComponent } from './Components/director/director.component';
+import { DirectorDetailComponent } from './Components/director-detail/director-detail.component';
+import { StarDetailComponent } from './Components/star-detail/star-detail.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { DirectorComponent } from './Components/director/director.component';
     AllContentsComponent,
     StarComponent,
     DirectorComponent,
+    DirectorDetailComponent,
+    StarDetailComponent,
     
   ],
   imports: [

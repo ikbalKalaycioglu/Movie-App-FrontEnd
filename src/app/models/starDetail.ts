@@ -1,5 +1,5 @@
 export interface StarDetail {
-    starId: number
+    id: number
     firstName: string,
     lastName: string
     bio: string,

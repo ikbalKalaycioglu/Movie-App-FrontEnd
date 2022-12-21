@@ -1,9 +1,9 @@
 export interface DirectorDetail {
-    directorId: number
+    id: number
     firstName: string,
     lastName: string
     bio: string,
-    bornDate: Date
+    bornDate : Date 
     imagePath : string
     contentId : number
 }
