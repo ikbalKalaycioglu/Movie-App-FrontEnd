@@ -1,0 +1,78 @@
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="1800">
+  <div class="carousel-inner">
+    <div class="carousel-item {{getActiveString(poster)}} " *ngFor="let poster of poster">
+      <img src="https://localhost:44341/Images/{{poster.imagePath}}" class="d-block w-100 " alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <div class="carouse-control-div">
+      <i class="bi bi-arrow-left-short"></i>
+      <span class="visually-hidden">Previous</span>
+    </div>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <div class="carouse-control-div">
+      <i class="bi bi-arrow-right-short"></i>
+      <span class="visually-hidden">Next</span>
+    </div>
+  </button>
+</div>
+
+<div class="container-fluid bg-dark">
+  <div class="container text-center" style="max-width: 80%;">
+    <div class="row justify-content-center">
+      <div class="col-8 px-0">
+        <div class="ratio ratio-16x9">
+          <iframe class="youtube-frame" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" title="YouTube video" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="col-4 px-0 bg-dark">
+        <div class="clearfix mt-3">
+          <img [src]="contentDetail.posterPath !== null ? posterURL + contentDetail.posterPath : posterURL + 'defaultImage.jpg'" style="max-width: 40%;" class="col-md-6 float-md-start mb-3 ms-md-3" alt="...">
+          <p class="pt-3 fs-1" style="color: orange;">{{contentDetail.title}}</p>
+          <hr>
+          <p class="fs-5">Category Name : {{contentDetail.categoryName}}</p>
+          <hr>
+          <i class="bi bi-star-fill" style="color: yellow;"></i><span class="px-3 fs-6">IMDb Rating :</span><span class="fs-5">{{contentDetail.imDbRating}}</span>
+          <hr>
+          <p class="p-1 fs-5">Genres : {{contentDetail.genre}}</p>
+          <hr>
+          <p class="text-center fs-4">{{contentDetail.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container marketing pt-3">
+  <!-- Three columns of text below the carousel -->
+  <div class="row">
+    <h2 class="title-director">Directors</h2>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-lg-5" *ngFor="let director of directorDetail">
+      <img class="rounded-circle" [src]="director.imagePath !== null ? directorImageURL+director.imagePath :'https://localhost:44341/images/directors/defaultImage.jpg'" alt="{{director.firstName + director.lastName}}"
+        width="140" height="140">
+      <h2 class="director-title">{{director.firstName + " "+ director.lastName}}</h2>
+      <p class="director-heading">{{director.bio}}</p>
+      <p><a class="btn btn-warning" role="button">View details &raquo;</a></p>
+    </div><!-- /.col-lg-4 -->
+  </div><!-- /.row -->
+
+
+  <!-- START THE FEATURETTES -->
+
+  <hr class="featurette-divider">
+  <h2 class="title-director">Stars</h2>
+
+  <div class="row featurette" *ngFor="let star of starDetail">
+    <div class="col-md-7">
+      <h3 class="featurette-heading">{{star.firstName + " " + star.lastName}}<span class="text-muted"> ({{star.bornDate | date:"mediumDate"}})</span></h3>
+      <p class="lead">{{star.bio}}</p>
+    </div>
+    <div class="col-md-4 ">
+      <img class="featurette-image" [src]="star.imagePath !== null ? starImageURL+star.imagePath :'https://localhost:44341/images/stars/defaultImage.jpg'" style="max-width: 90%;" alt="{{star.firstName + star.lastName}}">
+    </div>
+    <hr class="featurette-divider">
+  </div>

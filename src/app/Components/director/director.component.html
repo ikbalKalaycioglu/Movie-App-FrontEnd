@@ -1,0 +1,17 @@
+<div class="container py-3">
+    <div class="row row-cols-md-3 g-4">
+        <div class="col" *ngFor="let director of directors">
+            <div class="card text-bg-dark border-warning">
+                <a href=""><img [src]="director.imagePath !== null ? ImageURL + director.imagePath : ImageURL + 'defaultImage.jpg'" class="card-img-top" alt="..."></a>
+                <div class="card-body">
+                    <a class="link" href=""><h2 class="card-title">{{director.firstName + director.lastName}}</h2></a>
+                    <hr>
+                    <p class="card-text">{{getBio(director)}}... <a href="#" *ngIf="readMore">Read More</a> </p>
+                    <div class="card-body text-center">
+                        <a class="btn btn-warning" role="button">View details &raquo;</a>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

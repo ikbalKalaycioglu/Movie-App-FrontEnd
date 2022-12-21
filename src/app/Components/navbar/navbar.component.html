@@ -1,0 +1,37 @@
+<header class="p-3 bg-dark">
+  <div class="container">
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" routerLink="">Home</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Categories
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark"> 
+                <li *ngFor="let category of category">
+                  <a routerLink="/category/{{category.id}}" routerLinkActive="active" class="dropdown-item" >{{category.name}}</a>
+                </li>
+                <li><hr class="dropdown-divider"></li>
+
+                <li><a class="dropdown-item" routerLink="/allcontent" routerLinkActive="active">All Category</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/stars">Stars</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/directors">Directors</a>
+            </li>
+          </ul>
+          <div class="text-end">
+            <button type="button" routerLink="login" class="btn btn-outline-light me-2">Login</button>
+            <button type="button" routerLink="register" class="btn btn-warning">Sign-up</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+

@@ -1,0 +1,120 @@
+<div class="container">
+
+	<!--Slide Show -->
+	<div class="slide-show">
+		<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="1800">
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img src="https://wallpaperaccess.com/full/2000058.jpg" class="d-block w-100" height="450px" alt="...">
+				</div>
+				<div class="carousel-item">
+					<img src="https://www.pixelstalk.net/wp-content/uploads/2016/07/1080p-Movie-Backgrounds-Download.jpg" class="d-block w-100" height="450px" alt="...">
+				</div>
+				<div class="carousel-item">
+					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdKrcVMPSvg5KcppHup15gYcNELtSqHFjcerWq5sy_xCLAyGD-uPwz3lJzrIKMhWbAq0o&usqp=CAU" class="d-block w-100" height="450px" alt="...">
+				</div>
+			</div>
+			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+				<div class="carouse-control-div">
+					<i class="bi bi-arrow-left-short"></i>
+					<span class="visually-hidden">Previous</span>
+				</div>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+				<div class="carouse-control-div">
+					<i class="bi bi-arrow-right-short"></i>
+					<span class="visually-hidden">Next</span>
+				</div>
+			</button>
+		</div>
+	</div>
+</div>
+
+<div class="container-text">
+	<h3>{{category.name}}</h3>
+</div>
+
+<div class="container" *ngIf="dataLoaded == true">
+
+	<div class="movie-card" *ngFor="let contentDetail of contentDetail">
+		<div class="movie-header" >
+			<a routerLink="/content/{{contentDetail.id}}"><img [src]="contentDetail.posterPath !== null ? posterURL+contentDetail.posterPath :'https://localhost:44341/images/defaultImage.jpg'">
+				<div class="center">
+					<i class="bi bi-play"></i>
+				</div>
+			</a>
+		</div>
+		<!--movie-header-->
+		<div class="movie-content">
+			<div class="movie-content-header">
+				<a routerLink="/content/{{contentDetail.id}}">
+					<h3 class="movie-title">{{contentDetail.title}}</h3>
+				</a>
+				<a routerLink="/content/{{contentDetail.id}}"><i class="bi bi-info-circle"></i></a>
+
+			</div>
+			<div class="movie-info">
+				<div class="info-section">
+					<label>Category</label>
+					<span>{{contentDetail.categoryName}}</span>
+				</div>
+				<div class="info-section">
+					<label>Director Name</label>
+					<span>{{contentDetail.directorName}}</span>
+				</div>
+
+				<div class="info-section">
+					<label>IMDB</label>
+					<span><i class="bi bi-star-fill"></i> {{contentDetail.imDbRating}}</span>
+				</div>
+			</div>
+		</div>
+		<!--movie-content-->
+	</div>
+</div>	
+	<!--movie-card-->
+
+	<!--DataLoaded False ise-->
+<div class="container" *ngIf="dataLoaded == false">
+	<div class="movie-card" aria-hidden="true" *ngFor="let index of [0,1,2,3,4,5,6,7,8,9,10,11]">
+		<div class="movie-header placeholder-wave bg-secondary">
+			<span class="placeholder w-100 h-100"></span>
+
+		</div>
+		<!--movie-header-->
+		<div class="movie-content">
+			<div class="movie-content-header">
+				<a class="placeholder-wave">
+					<h5 class="placeholder placeholder-lg col-7"></h5>
+				</a>
+				<a><i class="bi bi-emoji-frown"></i></a>
+
+			</div>
+			<div class="movie-info placeholder-wave">
+				<div class="info-section">
+					<span class="placeholder col-10"></span>
+					<span class="placeholder col-10"></span>
+				</div>
+				<div class="info-section">
+					<span class="placeholder col-10"></span>
+					<span class="placeholder col-10"></span>
+				</div>
+
+				<div class="info-section">
+					<span class="placeholder col-10"></span>
+					<span class="placeholder col-10"></span>
+				</div>
+			</div>
+		</div>
+		<!--movie-content-->
+	</div>
+</div>
+
+
+
+
+
+<!--Scroll To Top için-->
+<div class="to-top" (click)="scrollToTop()" [ngClass]="{ 'show-scrollTop': windowScrolled }">
+	<i class="bi bi-arrow-up-short"></i>
+</div>

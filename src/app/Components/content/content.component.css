@@ -1,0 +1,319 @@
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a h3:hover {
+    color: #03a9f4;
+}   
+
+
+.container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    max-width: 100%;
+    margin-top: 1vh;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.movie-card {
+    box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 315px;
+    margin-left: 4em;
+    margin-right: 4em;
+    margin-bottom: 4em;
+    margin-top: 1em;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.movie-header {
+    padding: 0;
+    margin: 0;
+    height: 367px;
+    width: 100%;
+    display: block;
+    position: relative;
+}
+
+.movie-header img {
+    position: relative;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 100%;
+    width: 100%;
+}
+
+.center {
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+}
+
+.bi-play{
+    text-align: center;
+    vertical-align: middle;
+    margin: 0 auto;
+    color: #ffffff;
+    font-size: 60px;
+    text-shadow: 0px 0px 20px #6abcea, 0px 5px 20px #6ABCEA;
+    opacity: 1;
+}
+
+.movie-card:hover {
+    -webkit-transform: scale(1.03);
+    transform: scale(1.03);
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.movie-content {
+    padding: 18px 18px 24px 18px;
+    margin: 0;
+    background-color: rgb(71, 71, 71);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.movie-content-header,
+.movie-info {
+    display: table;
+    width: 100%;
+}
+
+.movie-title {
+    font-size: 22px;
+    margin: 0;
+    display: table-cell;
+}
+
+.bi-info-circle,.bi-emoji-frown {
+    float: right;
+    font-size: 23px;
+}
+
+
+.movie-info {
+    margin-top: 1em;
+}
+
+.info-section {
+    display: table-cell;
+    text-align: center;
+}
+
+.info-section:first-of-type {
+
+    text-align: left;
+}
+
+.info-section:last-of-type {
+    text-align: right;
+}
+
+.info-section label {
+    text-transform: uppercase;
+    display: block;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: .5em;
+    font-size: 12px;
+}
+
+.info-section span i {
+    color: yellow;
+    font-size: medium;
+}
+
+.info-section span {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+@media screen and (max-width: 500px) {
+    .movie-card {
+        width: 95%;
+        max-width: 95%;
+        margin: 1em;
+        display: block;
+    }
+
+    .container-text {
+        margin-left: 3rem;
+    }
+
+    .container {
+        padding: 0;
+        margin: 0;
+    }
+}
+
+.carousel-inner {
+    display: block;
+}
+
+.slide-show {
+    width: 50%;
+    display: block;
+    margin-top: 1vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bi-arrow-right-short {
+    float: left;
+    font-size: 40px;
+}
+
+.bi-arrow-left-short {
+    font-size: 40px;
+}
+
+.carouse-control-div {
+    float: left;
+    background-color: rgb(46, 46, 46);
+    border: 2px solid;
+    border-radius: 8px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: auto;
+    color: white;
+    transition: opacity .15s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+
+#button {
+    display: inline-block;
+    background-color: #FF9800;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 4px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    transition: background-color .3s,
+        opacity .5s, visibility .5s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+}
+
+#button::after {
+    content: "\f077";
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 2em;
+    line-height: 50px;
+    color: #fff;
+}
+
+#button:hover {
+    cursor: pointer;
+    background-color: #333;
+}
+
+#button:active {
+    background-color: #555;
+}
+
+#button.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Styles for the content section */
+
+.content {
+    width: 77%;
+    margin: 50px auto;
+    font-family: 'Merriweather', serif;
+    font-size: 17px;
+    color: #6c767a;
+    line-height: 1.9;
+}
+
+@media (min-width: 500px) {
+    .content {
+        width: 43%;
+    }
+
+    .container-text {
+        margin-left: 3rem;
+    }
+
+    #button {
+        margin: 30px;
+    }
+}
+
+.content h1 {
+    margin-bottom: -10px;
+    color: #03a9f4;
+    line-height: 1.5;
+}
+
+.content h3 {
+    font-style: italic;
+    color: #96a2a7;
+}
+
+.to-top {
+    background-color: orange;
+    border-radius: 50%;
+    bottom: 0;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    margin: 0 10px 30px 0;
+    position: fixed;
+    right: 20px;
+    opacity: 0;
+    text-align: center;
+}
+
+.to-top:hover {
+    background-color: rgb(214, 149, 27);
+}
+
+.show-scrollTop {
+    opacity: 1 !important;
+    transition: all 0.2s ease-in-out;
+}
+
+.bi-arrow-up-short {
+    font-size: 40px;
+    border-radius: 50%;
+    color: rgb(0, 0, 0);
+}
+
+.container-text {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    margin-top: 2vh;
+    margin-right: auto;
+    margin-left: 17rem;
+}
+
+.container-text h3 {
+    font-size: 2.3rem;
+    line-height: 2.5rem;
+    font-weight: 700;
+    -webkit-font-smoothing: auto;
+    text-decoration: inherit;
+    text-transform: inherit;
+    letter-spacing: .00735rem;
+    color: orange;
+}

@@ -1,0 +1,16 @@
+.navbar-header {
+    background-color: rgb(24, 24, 24);
+}
+
+.active {
+    background-color: orange;
+}
+
+.dropdown-item:active {
+    background-color: orange;
+}
+
+.dropdown-divider{
+    background-color: white;
+}
+

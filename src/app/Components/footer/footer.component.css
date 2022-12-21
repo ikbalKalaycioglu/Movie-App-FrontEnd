@@ -1,0 +1,44 @@
+
+.container-fluid{
+    color:#000 !important;
+}
+
+.card{
+    background-color: #ffffff !important;
+}
+
+p{
+    font-size: calc(12px + (14 - 12) * ((100vw - 360px) / (1600 - 360))) !important; 
+    display: fkex;
+}
+
+h3{
+    font-size: calc(24px + (30 - 24) * ((100vw - 360px) / (1600 - 360))) !important; 
+}
+
+.social{
+    font-size: 21px !important; 
+}
+
+ footer{
+    color:#ffffff !important;
+ }
+
+ li{
+     margin-top: 20px ;
+     margin-bottom: 20px ;
+ }
+ 
+.Careers{ 
+    cursor: pointer;
+    color: #d8d8d8;
+}
+
+.row-1{
+    background-color:#0a0b0c !important;
+}
+
+.row-2{
+    
+    background-color: #11161b !important;
+}

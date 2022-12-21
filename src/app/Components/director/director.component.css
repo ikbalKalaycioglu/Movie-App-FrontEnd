@@ -1,0 +1,18 @@
+.card img{
+    height: 400px;
+  }
+  
+  .card-text a{
+    color: orange;
+  }
+  .card-text a:hover{
+    color: rgb(185, 147, 75);
+  }
+  .link{
+    text-decoration: none;
+    color: orange;
+  }
+  
+  .link:hover{
+    color: rgb(185, 147, 75);
+  }
