@@ -21,18 +21,27 @@ export class RegisterComponent implements OnInit {
 
   }
 
-  createRegisterForm(){
+  createRegisterForm() {
     this.registerForm = this.formBuilder.group({
-      firstName: ["",Validators.required],
-      lastName:["",Validators.required],
-      email: ["",Validators.required],
-      password:["",Validators.required]
+      firstName: ["", Validators.required],
+      lastName: ["", Validators.required],
+      email: ["", Validators.required],
+      password: ["", Validators.required]
     })
   }
 
   register() {
     if (this.registerForm.valid) {
-      console.log(this.registerForm.value)
+      let registerModel = Object.assign({}, this.registerForm.value)
+      this.authService.register(registerModel).subscribe(response => {
+        this.toastr.info(response.message, "Register Completed");
+        localStorage.setItem("token", response.data.token)
+      }, responseError => {
+        this.toastr.error(responseError.error, "Fail !");
+      })
+    }
+    else {
+      this.toastr.error("Please Fill in All Fields","Error !")
     }
   }
 }

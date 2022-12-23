@@ -9,7 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './Components/footer/footer.component';
 import { SideBarComponent } from './Components/side-bar/side-bar.component';
 import { ContentComponent } from './Components/content/content.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
@@ -23,6 +23,8 @@ import { DirectorComponent } from './Components/director/director.component';
 import { DirectorDetailComponent } from './Components/director-detail/director-detail.component';
 import { StarDetailComponent } from './Components/star-detail/star-detail.component';
 import { ToastrModule } from 'ngx-toastr';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,6 @@ import { ToastrModule } from 'ngx-toastr';
     DirectorComponent,
     DirectorDetailComponent,
     StarDetailComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -61,7 +62,11 @@ import { ToastrModule } from 'ngx-toastr';
       disableTimeOut: false
     })
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

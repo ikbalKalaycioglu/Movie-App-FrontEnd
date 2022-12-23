@@ -1,15 +1,15 @@
-<div class="form">
+<form [formGroup]="loginForm" class="form">
     <div class="title">Welcome</div>
     <div class="subtitle">Let's login!</div>
     <div class="input-container ic2">
-        <input id="email" class="input" type="email" placeholder=" " />
+        <input formControlName="email" id="email" class="input" type="email" placeholder=" " />
         <div class="cut cut-short"></div>
         <label for="email" class="placeholderr">Email</label>
     </div>
     <div class="input-container ic2">
-        <input id="password" class="input" type="password" placeholder=" " />
+        <input formControlName="password" autocomplete="on" id="password" class="input" type="password" placeholder=" " />
         <div class="cut"></div>
         <label for="password" class="placeholderr">Password</label>
     </div>
-    <button type="text" class="submit">submit</button>
-</div>
+    <button type="text" (click)="login()" class="submit">submit</button>
+</form>

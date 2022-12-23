@@ -10,7 +10,10 @@
     background-color: orange;
 }
 
-.dropdown-divider{
+.dropdown-divider {
     background-color: white;
 }
 
+.bi-person-circle {
+    font-size: 25px;
+}
