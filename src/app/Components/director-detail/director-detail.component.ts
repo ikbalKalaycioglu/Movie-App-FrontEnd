@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ContentDetail } from 'src/app/models/contentDetail';
 import { DirectorDetail } from 'src/app/models/directorDetail';
+import { DirectorImage } from 'src/app/models/directorImage';
 import { ContentService } from 'src/app/services/content.service';
+import { DirectorImageService } from 'src/app/services/director-image.service';
 import { DirectorService } from 'src/app/services/director.service';
 
 @Component({
@@ -19,7 +21,7 @@ export class DirectorDetailComponent implements OnInit {
     contentId: 0,
     firstName: "",
     lastName: "",
-    imagePath : ""
+    imagePath: ""
   };
   contentDetail: ContentDetail = {
     id: 0,
@@ -35,29 +37,37 @@ export class DirectorDetailComponent implements OnInit {
     posterPath: "string",
     playbackURL: "string"
   };
-
-  constructor(private directorService: DirectorService, private contentService: ContentService, private activatedRoute: ActivatedRoute) { }
+  ImageUrl: string = ""
+  directorImageURL = "https://localhost:44341/images/directors/"
+  directorImage: DirectorImage[] = []
+  constructor(private directorService: DirectorService, private directorImageService :DirectorImageService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       if (params["directorId"]) {
         this.getDetailsById(params["directorId"]);
+        this.getDirectorImageById(params["directorId"]);
       }
-    })
-  }
-  getContentById(contentId: number) {
-    this.contentService.getContentDetailById(contentId).subscribe(response => {
-      this.contentDetail = response.data;
-      console.log(this.contentDetail)
     })
   }
 
   getDetailsById(directorId: number) {
     this.directorService.getDetailsById(directorId).subscribe(response => {
       this.director = response.data;
-      console.log(this.director)
-
     })
   }
 
+  getDirectorImageById(directorId: number) {
+    this.directorImageService.getByDirectorId(directorId).subscribe(response => {
+      this.directorImage = response.data
+    })
+  }
+
+  getImage(Image: DirectorImage) {
+    this.ImageUrl = Image.imagePath;
+  }
+
+  putImage() {
+    return this.directorImageURL + this.ImageUrl
+  }
 }
