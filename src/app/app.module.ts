@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,12 +16,13 @@ import { PageNotFoundComponent } from './Components/page-not-found/page-not-foun
 import { LoginComponent } from './Components/login/login.component';
 import { ContentDetailComponent } from './Components/content-detail/content-detail.component';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AllContentsComponent } from './Components/all-contents/all-contents.component';
 import { StarComponent } from './Components/star/star.component';
 import { DirectorComponent } from './Components/director/director.component';
 import { DirectorDetailComponent } from './Components/director-detail/director-detail.component';
 import { StarDetailComponent } from './Components/star-detail/star-detail.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -38,14 +41,25 @@ import { StarDetailComponent } from './Components/star-detail/star-detail.compon
     DirectorComponent,
     DirectorDetailComponent,
     StarDetailComponent,
-    
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+      closeButton: false,
+      progressAnimation: 'increasing',
+      progressBar: true,
+      disableTimeOut: false
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
