@@ -25,6 +25,7 @@ import { StarDetailComponent } from './Components/star-detail/star-detail.compon
 import { ToastrModule } from 'ngx-toastr';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { ProfileComponent } from './Components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     DirectorComponent,
     DirectorDetailComponent,
     StarDetailComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

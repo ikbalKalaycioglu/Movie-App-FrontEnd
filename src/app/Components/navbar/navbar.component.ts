@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Category } from 'src/app/models/category';
 import { User } from 'src/app/models/user';
@@ -19,10 +20,12 @@ export class NavbarComponent implements OnInit {
     firstName: "",
     lastName: "",
     status: true,
-    id:0
+    id: 0,
+    passwordHash: "",
+    passwordSalt: ""
   }
 
-  constructor(private categoryService: CategoryService, private toastr: ToastrService, private authService: AuthService, private userService: UserService) {
+  constructor(private categoryService: CategoryService, private toastr: ToastrService, private authService: AuthService, private userService: UserService,private router: Router) {
 
 
   }
@@ -46,7 +49,7 @@ export class NavbarComponent implements OnInit {
 
   logOut() {
     localStorage.removeItem("token")
-    window.location.reload();
+    this.router.navigate(["/"]);
     this.toastr.info("LogOut !")
   }
 

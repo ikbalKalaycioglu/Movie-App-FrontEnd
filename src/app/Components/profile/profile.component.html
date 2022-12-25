@@ -1,0 +1,51 @@
+<div *ngIf="dataLoaded" class="container rounded mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="d-flex flex-column  align-items-center text-center p-3 py-5">
+                <img class="my-3" width="200px" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+                <span class="fs-2">{{user.firstName}} {{user.lastName}}</span>
+                <span class="text-white-50 fs-5">{{user.email}}</span>
+            </div>
+        </div>
+        <form [formGroup]="profileForm" class="col-md-9 form-floating">
+            <div class="p-3 py-0">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h2 style="color: orange;">Profile Settings</h2>
+                </div>
+                <div class="col-md-12"><label class="labels">Email</label>
+                    <input type="email" class="form-control text-black" value="{{user.email}}" disabled>
+                </div>
+                <div class="row my-3">
+                    <div class="col-md-6"><label class="labels">Name</label>
+                        <input formControlName="firstName" type="text" class="form-control text-black" placeholder="FirstName">
+                    </div>
+                    <div class="col-md-6"><label class="labels">Surname</label>
+                        <input formControlName="lastName" type="text" class="form-control text-black" value="" placeholder="Soyad">
+                    </div>
+                </div>
+
+                <div class="mt-4 mb-4 text-center w-100">
+                    <button (click)="updateUserName()" class="w-50 btn btn-warning btn-md" type="button">Bilgileri Güncelle</button>
+                </div>
+
+                <form [formGroup]="passwordForm">
+
+                    <div class="col-md-6 "><label class="labels">Eski Şifre</label>
+                        <input formControlName="oldPassword" type="password" autocomplete="on" class="form-control text-black" placeholder="Eski Şifre" value="">
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6"><label class="labels">Yeni Şifre</label>
+                            <input formControlName="newPassword" type="password" autocomplete="on" class="form-control text-black" placeholder="Yeni Şifre" value="">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="labels">Yeni Şifre Tekrarı</label>
+                            <input formControlName="repeatNewPassword" type="password" autocomplete="on" class="form-control text-black" value="" placeholder="Yeni Şifre Tekrarı">
+                        </div>
+                    </div>
+                    <div class="mt-4 mb-4 text-center w-100"><button (click)="updatePassword()" class="w-50 btn btn-danger profile-button" type="button">Şifreyi Güncelle</button></div>
+                </form>
+            </div>
+        </form>
+    </div>
+</div>
+

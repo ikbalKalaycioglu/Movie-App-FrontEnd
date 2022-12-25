@@ -3,5 +3,7 @@ export interface User {
     firstName: string,
     lastName: string,
     email: string,
-    status: boolean
+    status: boolean,
+    passwordHash: string,
+    passwordSalt: string
 }

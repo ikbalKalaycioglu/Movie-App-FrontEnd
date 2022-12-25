@@ -7,6 +7,7 @@ import { DirectorDetailComponent } from './Components/director-detail/director-d
 import { DirectorComponent } from './Components/director/director.component';
 import { LoginComponent } from './Components/login/login.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
+import { ProfileComponent } from './Components/profile/profile.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { StarDetailComponent } from './Components/star-detail/star-detail.component';
 import { StarComponent } from './Components/star/star.component';
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: "stardetail/:starId", component: StarDetailComponent},
   { path: "register", component: RegisterComponent },
   { path: "login", component: LoginComponent },
+  { path: "profile", component: ProfileComponent },
   { path: "**", component: PageNotFoundComponent }
 ];
 

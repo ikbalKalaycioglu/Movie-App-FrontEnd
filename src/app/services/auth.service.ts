@@ -4,6 +4,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 import { LoginModel } from '../models/login';
 import { RegisterModel } from '../models/register';
+import { ResponseModel } from '../models/responseModel';
 import { SingleResponseModel } from '../models/singleResponseModel';
 import { TokenModel } from '../models/token';
 import { UserPasswordModel } from '../models/userPassword';
@@ -41,12 +42,11 @@ export class AuthService {
 
   updatePassword(userPasswordModel: UserPasswordModel) {
     let newPath = this.apiURL + "updatepassword";
-    this.httpClient.post<SingleResponseModel<UserPasswordModel>>(newPath, userPasswordModel);
+    return this.httpClient.post<ResponseModel>(newPath, userPasswordModel);
   }
 
   get DecodedToken() {
     let token = localStorage.getItem("token") || '{}'
-    console.log(this.jwtHelperService.decodeToken(token));
     return this.jwtHelperService.decodeToken(token)
   }
 
