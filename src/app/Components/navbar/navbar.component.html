@@ -3,12 +3,12 @@
     <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" routerLink="">Home</a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 Categories
-              </a>
+              </button>
               <ul class="dropdown-menu dropdown-menu-dark">
                 <li *ngFor="let category of category">
                   <a routerLink="/category/{{category.id}}" routerLinkActive="active" class="dropdown-item">{{category.name}}</a>
@@ -21,11 +21,12 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/stars">Stars</a>
+              <button class="btn btn-dark" routerLink="/stars">Stars</button>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/directors">Directors</a>
+              <button class="btn btn-dark" routerLink="/directors">Directors</button>
             </li>
+            
           </ul>
           <!--Authenticated is false -->
           <div *ngIf="!isAuthenticated()" class="text-end">
@@ -34,14 +35,14 @@
           </div>
 
           <!--Authenticated is true -->
-          <div *ngIf="isAuthenticated()" class="dropdown text-end">
+          <div *ngIf="!checkIfAdmin() && isAuthenticated()" class="dropdown text-end">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><a class="nav-link fs-4" style="color: orange;" >Welcome {{user.firstName}}</a></li>
               
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle link-light " role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                   <i class="bi bi-person-circle"></i>
-                </a>
+                </button>
                 <ul class="dropdown-menu dropdown-menu-dark">
                   <li><a class="dropdown-item" href="#">New project...</a></li>
                   <li><a class="dropdown-item" href="#">Settings</a></li>
@@ -52,9 +53,32 @@
                   <li><a class="dropdown-item" href="#" (click)="logOut()">Sign out</a></li>
                 </ul>
               </li>
-            </ul>            
+            </ul>
           </div>
           <!--Authenticated end -->
+          <div *ngIf="checkIfAdmin()" class="dropdown text-end">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><a class="nav-link fs-4" style="color: orange;" >Admin {{user.firstName}}</a></li>
+              
+              <li class="nav-item dropdown">
+                <button routerLinkActive="active" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="bi bi-person-circle"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li><a class="dropdown-item" routerLink="/addcontent">Content</a></li>
+                  <li><a class="dropdown-item" routerLink="/addcategory">Category</a></li>
+                  <li><a class="dropdown-item" routerLink="/addstar">Star</a></li>
+                  <li><a class="dropdown-item" routerLink="/adddirector">Director</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" routerLink="/profile">Profile</a></li>
+                  <li><a class="dropdown-item" href="#" (click)="logOut()">Sign out</a></li>
+                </ul>
+              </li>
+            </ul>            
+          </div>
+
         </div>
       </div>
     </nav>

@@ -25,7 +25,7 @@ export class NavbarComponent implements OnInit {
     passwordSalt: ""
   }
 
-  constructor(private categoryService: CategoryService, private toastr: ToastrService, private authService: AuthService, private userService: UserService,private router: Router) {
+  constructor(private categoryService: CategoryService, private toastr: ToastrService, private authService: AuthService, private userService: UserService, private router: Router) {
 
 
   }
@@ -33,6 +33,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.getCategory();
     this.getUserById();
+    this.checkIfAdmin();
   }
 
   getCategory() {
@@ -53,8 +54,21 @@ export class NavbarComponent implements OnInit {
     this.toastr.info("LogOut !")
   }
 
-  isAuthenticated(){
+  isAuthenticated() {
     return this.authService.isAuthenticated();
+  }
+
+  checkIfAdmin() {
+    if (this.authService.isAuthenticated()) {
+      if (this.authService.hasRole() == "admin") {
+        return true
+      }
+      else {
+        return false
+      }
+    } else {
+      return false
+    }
   }
 
 

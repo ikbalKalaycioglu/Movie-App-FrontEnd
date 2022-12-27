@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ListResponseModel } from '../models/listResponseModel';
+import { ResponseModel } from '../models/responseModel';
 import { SingleResponseModel } from '../models/singleResponseModel';
+import { Star } from '../models/star';
 import { StarDetail } from '../models/starDetail';
 
 @Injectable({
@@ -28,5 +30,11 @@ export class StarService {
   getDetailsById(id: number): Observable<SingleResponseModel<StarDetail>>{
     let newPath = this.apiURL + "getDetailsByStarId?id=" + id;
     return this.httpClient.get<SingleResponseModel<StarDetail>>(newPath);
+  }
+
+  add(star: Star): Observable<ResponseModel>{
+    let newPath = this.apiURL + "add";
+    return this.httpClient.post<ResponseModel>(newPath, star);
+
   }
 }

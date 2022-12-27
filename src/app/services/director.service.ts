@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Director } from '../models/director';
 import { DirectorDetail } from '../models/directorDetail';
 import { ListResponseModel } from '../models/listResponseModel';
+import { ResponseModel } from '../models/responseModel';
 import { SingleResponseModel } from '../models/singleResponseModel';
 
 @Injectable({
@@ -28,5 +29,10 @@ export class DirectorService {
   getDetailsById(directorId: number): Observable<SingleResponseModel<DirectorDetail>> {
     let newPath = this.apiURL + "GetDetailsById?id=" + directorId
     return this.httpClient.get<SingleResponseModel<DirectorDetail>>(newPath);
+  }
+
+  add(director: Director): Observable<ResponseModel> {
+    let newPath = this.apiURL + "add"
+    return this.httpClient.post<ResponseModel>(newPath, director);
   }
 }

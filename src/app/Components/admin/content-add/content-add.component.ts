@@ -54,6 +54,9 @@ export class ContentAddComponent implements OnInit {
       let contentModel = Object.assign({}, this.contentAddForm.value)
       this.contentService.add(contentModel).subscribe(response => {
         this.toastr.success(response.message, "Successful !")
+        setTimeout(() => {
+          window.location.reload()
+        }, 500);
       }, responseError => {
         if (responseError.error.Errors.length > 0) {
           for (let i = 0; i < responseError.error.Errors.length; i++) {

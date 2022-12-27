@@ -28,6 +28,9 @@ import { ProfileComponent } from './Components/profile/profile.component';
 import { ContentAddComponent } from './Components/admin/content-add/content-add.component';
 import { CategoryAddComponent } from './Components/admin/category-add/category-add.component';
 import { StarAddComponent } from './Components/admin/star-add/star-add.component';
+import { DirectorAddComponent } from './Components/admin/director-add/director-add.component';
+import { ContentUpdateComponent } from './Components/admin/content-update/content-update.component';
+
 
 @NgModule({
   declarations: [
@@ -49,6 +52,8 @@ import { StarAddComponent } from './Components/admin/star-add/star-add.component
     ContentAddComponent,
     CategoryAddComponent,
     StarAddComponent,
+    DirectorAddComponent,
+    ContentUpdateComponent,
   ],
   imports: [
     BrowserModule,

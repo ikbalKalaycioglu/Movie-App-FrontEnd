@@ -3,19 +3,19 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Content } from 'src/app/models/content';
 import { ContentService } from 'src/app/services/content.service';
-import { StarService } from 'src/app/services/star.service';
+import { DirectorService } from 'src/app/services/director.service';
 
 @Component({
-  selector: 'app-star-add',
-  templateUrl: './star-add.component.html',
-  styleUrls: ['./star-add.component.css']
+  selector: 'app-director-add',
+  templateUrl: './director-add.component.html',
+  styleUrls: ['./director-add.component.css']
 })
-export class StarAddComponent implements OnInit {
+export class DirectorAddComponent implements OnInit {
 
-  starAddForm!: FormGroup
+  directorAddForm!: FormGroup
   content:Content[] = []
 
-  constructor(private starService: StarService, private contentService: ContentService, private toastr: ToastrService,private formBuilder :FormBuilder) { }
+  constructor(private directorService: DirectorService, private contentService: ContentService, private toastr: ToastrService,private formBuilder :FormBuilder) { }
 
   ngOnInit(): void {
     this.createStarAddForm();
@@ -23,7 +23,7 @@ export class StarAddComponent implements OnInit {
   }
 
   createStarAddForm() {
-    this.starAddForm = this.formBuilder.group({
+    this.directorAddForm = this.formBuilder.group({
       firstName : ["",Validators.required],
       lastName : ["",Validators.required],
       bio: ["", Validators.required],
@@ -39,9 +39,9 @@ export class StarAddComponent implements OnInit {
   }
 
   add() {
-    if (this.starAddForm.valid) {
-      let starModel = Object.assign({}, this.starAddForm.value)
-      this.starService.add(starModel).subscribe(response => {
+    if (this.directorAddForm.valid) {
+      let directorModel = Object.assign({}, this.directorAddForm.value)
+      this.directorService.add(directorModel).subscribe(response => {
         this.toastr.success(response.message, "Successful !")
         setTimeout(() => {
           window.location.reload()
@@ -59,7 +59,6 @@ export class StarAddComponent implements OnInit {
   }
 
   closeContentModel() {
-    this.starAddForm.reset();
+    this.directorAddForm.reset();
   }
-
 }

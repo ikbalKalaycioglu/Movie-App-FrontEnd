@@ -58,4 +58,13 @@ export class AuthService {
     let userId: number = decodedToken[userIdString];
     return userId;
   }
+
+  hasRole() {
+    let decodedToken = this.DecodedToken
+    let userRoleString = Object.keys(decodedToken).filter((t) =>
+      t.endsWith('/role')
+    )[0];
+    let userRole: string = decodedToken[userRoleString];
+    return userRole;
+  }
 }
