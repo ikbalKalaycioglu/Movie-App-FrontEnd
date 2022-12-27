@@ -1,0 +1,141 @@
+<!-- <div class="container">
+    <div class="card text-bg-dark ">
+        <div class="card-body">
+            <form class="form bg-dark">
+                <div class="align-items-center">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div id="AddCarImagesCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                                    <div class="carousel-indicators">
+                                        <button *ngFor="let carImage of carImagesPaths; let i = index" type="button" data-bs-target="#AddCarImagesCarousel" attr.data-bs-slide-to="{{i}}"
+                                            class="{{(i == 0) ? 'active' : ''}}" attr.aria-label="Slide {{i}}"></button>
+                                    </div>
+                                    <div class="carousel-inner">
+                                        <div *ngFor="let carImage of carImagesPaths; let i = index" class="{{(i == 0) ? 'carousel-item active' : 'carousel-item' }}">
+                                            <img [src]="carImage" height="200" alt="image not found">
+                                        </div>
+                                    </div>
+                                    <div *ngIf="carImagesPaths.length>1">
+                                        <button class="carousel-control-prev" type="button" data-bs-target="#AddCarImagesCarousel" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button" data-bs-target="#AddCarImagesCarousel" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="carImagesPaths.length===0">
+                                <img src="/assets/images/addcarimage.png" height="200" alt="image not found">
+                            </div>
+                            <div class="row mt-2 ms-2">
+                                <input #file class="form-control" type="file" id="carImagesFiles" accept="image/*" (change)="addCarImagesToCarImagesAndPathList(file.files)">
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5">
+                            <div *ngIf="carImagesFiles.length>0" class="row">
+                                <ul class="list-group">
+                                    <li *ngFor="let file of carImagesFiles" class="list-group-item">
+                                        <div class="d-flex justify-content-between">
+                                            <small>{{file.file.name}}</small>
+                                            <span>
+                                                <svg (click)="deleteImageFromCarImagesList(file)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-x-square-fill" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <p class="text-center text-muted">
+                                    <small>{{carImagesFiles.length}}/5 dosya</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> -->
+
+
+<form class="form text-center" *ngIf="contentAddForm" [formGroup]="contentAddForm">
+    <div class="title">Content Add</div>
+    <div class="subtitle">Let's create content!</div>
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="input-container ic1">
+                <input id="title" formControlName="title" class="input" type="text" placeholder=" " />
+                <div class="cut cut-short"></div>
+                <label for="title" class="placeholderr">Title</label>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="input-container ic1">
+                <input id="PlaybackURL" class="input" formControlName="playbackURL" type="text" placeholder=" " />
+                <div class="cut"></div>
+                <label for="playbackURL" class="placeholderr">PlaybackURL</label>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="input-container ic1 text-center">
+                <input type="range" class="input form-range" [formControl]="imdbRating" formControlName="imDbRating" min="0" max="10" step="0.1" id="imdb">
+                <div class="cut"></div>
+                <label for="imdb" class="placeholderr">ImdbRating</label>
+                <label class="fs-6 fw-bold " style="color: orange;" for="imdb">{{imdbRating.value}}</label>
+            </div>
+
+        </div>
+        <div class="col-md-4">
+            <div class="input-container ic1">
+                <select class="input form-select bg-dark" id="category" formControlName="categoryId" [value]="1">
+                    <option selected *ngFor="let category of category" [value]="category.id">
+                        {{category.name}}
+                    </option>
+                </select>
+                <div class="cut"></div>
+                <label for="category" class="placeholderr">Category Name</label>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="input-container ic1">
+                <input id="writer" formControlName="writer" class="input" type="text" placeholder=" " />
+                <div class="cut"></div>
+                <label for="writer" class="placeholderr">Writer Name</label>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="input-container ic1">
+                <input id="Genre" class="input" formControlName="genre" type="text" placeholder=" " />
+                <div class="cut cut-short"></div>
+                <label for="Genre" class="placeholderr">Genre</label>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="input-container ic1 description">
+                <textarea class="form-control input" id="floatingTextarea2" style="height: 100px" formControlName="description" placeholder=" "></textarea>
+                <div class="cut"></div>
+                <label for="Genre" class="placeholderr">Description</label>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-end">
+        <div class="col-md-2">
+            <button type="text" (click)="add()" class="submit">Add</button>
+        </div>
+        <div class="col-md-2">
+            <button type="text" (click)="closeContentModel()" class="submit cancel">Clear</button>
+        </div>
+    </div>
+</form>

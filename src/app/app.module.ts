@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './Components/footer/footer.component';
-import { SideBarComponent } from './Components/side-bar/side-bar.component';
 import { ContentComponent } from './Components/content/content.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NavbarComponent } from './Components/navbar/navbar.component';
@@ -26,12 +25,14 @@ import { ToastrModule } from 'ngx-toastr';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ProfileComponent } from './Components/profile/profile.component';
+import { ContentAddComponent } from './Components/admin/content-add/content-add.component';
+import { CategoryAddComponent } from './Components/admin/category-add/category-add.component';
+import { StarAddComponent } from './Components/admin/star-add/star-add.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
-    SideBarComponent,
     ContentComponent,
     NavbarComponent,
     RegisterComponent,
@@ -45,6 +46,9 @@ import { ProfileComponent } from './Components/profile/profile.component';
     DirectorDetailComponent,
     StarDetailComponent,
     ProfileComponent,
+    ContentAddComponent,
+    CategoryAddComponent,
+    StarAddComponent,
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Category } from '../models/category';
 import { ListResponseModel } from '../models/listResponseModel';
+import { ResponseModel } from '../models/responseModel';
 import { SingleResponseModel } from '../models/singleResponseModel';
 
 @Injectable({
@@ -22,5 +23,10 @@ export class CategoryService {
   getById(categoryId: number): Observable<SingleResponseModel<Category>> {
     let newPath = this.apiURL + "getbyid?id=" + categoryId
     return this.httpClient.get<SingleResponseModel<Category>>(newPath);
+  }
+
+  add(category: Category): Observable<ResponseModel> {
+    let newPath = this.apiURL + "add"
+    return this.httpClient.post<ResponseModel>(newPath, category);
   }
 }

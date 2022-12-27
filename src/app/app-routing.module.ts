@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CategoryAddComponent } from './Components/admin/category-add/category-add.component';
+import { ContentAddComponent } from './Components/admin/content-add/content-add.component';
 import { AllContentsComponent } from './Components/all-contents/all-contents.component';
 import { ContentDetailComponent } from './Components/content-detail/content-detail.component';
 import { ContentComponent } from './Components/content/content.component';
@@ -11,6 +13,7 @@ import { ProfileComponent } from './Components/profile/profile.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { StarDetailComponent } from './Components/star-detail/star-detail.component';
 import { StarComponent } from './Components/star/star.component';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   { path: "", pathMatch: "full", component: ContentComponent},
@@ -23,7 +26,9 @@ const routes: Routes = [
   { path: "stardetail/:starId", component: StarDetailComponent},
   { path: "register", component: RegisterComponent },
   { path: "login", component: LoginComponent },
-  { path: "profile", component: ProfileComponent },
+  { path: "profile", component: ProfileComponent , canActivate: [LoginGuard]},
+  { path: "addcontent", component: ContentAddComponent, canActivate: [LoginGuard]},
+  { path: "addcategory", component: CategoryAddComponent, canActivate: [LoginGuard]},
   { path: "**", component: PageNotFoundComponent }
 ];
 

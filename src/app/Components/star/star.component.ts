@@ -13,10 +13,12 @@ export class StarComponent implements OnInit {
   ImageURL = "https://localhost:44341/images/Stars/"
   readMore = false;
 
+
   constructor(private starService: StarService) { }
 
   ngOnInit(): void {
     this.getStars();
+    
   }
 
   getStars() {
@@ -33,8 +35,7 @@ export class StarComponent implements OnInit {
     }
     else {
       this.readMore = false;
-    return star.bio
+      return star.bio
     }
-    
   }
 }

@@ -64,7 +64,7 @@ export class ProfileComponent implements OnInit {
       })
     }
     else {
-      this.toastr.error("Lütfen Tüm alanları doldurunuz ! ", "Fail !")
+      this.toastr.error("Please Fill in All Fields","Error !")
     }
   }
 
@@ -78,7 +78,7 @@ export class ProfileComponent implements OnInit {
       });
     }
     else {
-      this.toastr.error("Lütfen tüm alanları doldurunuz.", "Hata!");
+      this.toastr.error("Please Fill in All Fields","Error !");
     }
   }
 
