@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CategoryAddComponent } from './Components/admin/category-add/category-add.component';
 import { ContentAddComponent } from './Components/admin/content-add/content-add.component';
+import { ContentUpdateComponent } from './Components/admin/content-update/content-update.component';
 import { DirectorAddComponent } from './Components/admin/director-add/director-add.component';
 import { StarAddComponent } from './Components/admin/star-add/star-add.component';
 import { AllContentsComponent } from './Components/all-contents/all-contents.component';
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "profile", component: ProfileComponent , canActivate: [LoginGuard]},
   { path: "addcontent", component: ContentAddComponent, canActivate: [LoginGuard]},
+  { path: "updatecontent", component: ContentUpdateComponent, canActivate: [LoginGuard]},
   { path: "addcategory", component: CategoryAddComponent, canActivate: [LoginGuard]},
   { path: "addstar", component: StarAddComponent, canActivate: [LoginGuard]},
   { path: "adddirector", component: DirectorAddComponent, canActivate: [LoginGuard]},

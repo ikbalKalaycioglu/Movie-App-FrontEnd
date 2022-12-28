@@ -17,7 +17,7 @@
                   <hr class="dropdown-divider">
                 </li>
 
-                <li><a class="dropdown-item" routerLink="/allcontent" routerLinkActive="active">All Category</a></li>
+                <li><a class="dropdown-item" routerLink="/allcontent" routerLinkActive="active">Search Content</a></li>
               </ul>
             </li>
             <li class="nav-item">
@@ -26,7 +26,7 @@
             <li class="nav-item">
               <button class="btn btn-dark" routerLink="/directors">Directors</button>
             </li>
-            
+
           </ul>
           <!--Authenticated is false -->
           <div *ngIf="!isAuthenticated()" class="text-end">
@@ -37,8 +37,8 @@
           <!--Authenticated is true -->
           <div *ngIf="!checkIfAdmin() && isAuthenticated()" class="dropdown text-end">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><a class="nav-link fs-4" style="color: orange;" >Welcome {{user.firstName}}</a></li>
-              
+              <li class="nav-item dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><a class="nav-link fs-4" style="color: orange;">Welcome {{user.firstName}}</a></li>
+
               <li class="nav-item dropdown">
                 <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                   <i class="bi bi-person-circle"></i>
@@ -58,17 +58,38 @@
           <!--Authenticated end -->
           <div *ngIf="checkIfAdmin()" class="dropdown text-end">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><a class="nav-link fs-4" style="color: orange;" >Admin {{user.firstName}}</a></li>
-              
+              <li class="nav-item dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link fs-4" style="color: orange;">Admin {{user.firstName}}</a>
+              </li>
               <li class="nav-item dropdown">
-                <button routerLinkActive="active" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                   <i class="bi bi-person-circle"></i>
-                </button>
+                </a>
                 <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" routerLink="/addcontent">Content</a></li>
-                  <li><a class="dropdown-item" routerLink="/addcategory">Category</a></li>
-                  <li><a class="dropdown-item" routerLink="/addstar">Star</a></li>
-                  <li><a class="dropdown-item" routerLink="/adddirector">Director</a></li>
+                  <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle">Content</a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                      <li><a class="dropdown-item" routerLink="/addcontent" routerLinkActive="active">Add</a></li>
+                      <li><a class="dropdown-item" routerLink="/updatecontent" routerLinkActive="active">Update</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle">Category</a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                      <li><a class="dropdown-item" routerLink="/addcategory" routerLinkActive="active">Add</a></li>
+                      <li><a class="dropdown-item" routerLink="/updatecategory" routerLinkActive="active">Update</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle">Star</a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                      <li><a class="dropdown-item" routerLink="/addstar" routerLinkActive="active">Add</a></li>
+                      <li><a class="dropdown-item" routerLink="/updatestar" routerLinkActive="active">Update</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle">Director</a>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                      <li><a class="dropdown-item" routerLink="/adddirector" routerLinkActive="active">Add</a></li>
+                      <li><a class="dropdown-item" routerLink="/updatedirector" routerLinkActive="active">Update</a></li>
+                    </ul>
+                  </li>
                   <li>
                     <hr class="dropdown-divider">
                   </li>
@@ -76,7 +97,7 @@
                   <li><a class="dropdown-item" href="#" (click)="logOut()">Sign out</a></li>
                 </ul>
               </li>
-            </ul>            
+            </ul>
           </div>
 
         </div>

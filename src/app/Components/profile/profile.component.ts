@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
@@ -26,7 +27,7 @@ export class ProfileComponent implements OnInit {
   passwordForm!: FormGroup
   dataLoaded = false
 
-  constructor(private userService: UserService, private authService: AuthService, private formBuilder: FormBuilder, private toastr: ToastrService) { }
+  constructor(private userService: UserService, private authService: AuthService, private formBuilder: FormBuilder, private toastr: ToastrService,private router:Router) { }
 
   ngOnInit(): void {
     this.getUserById();
@@ -73,6 +74,9 @@ export class ProfileComponent implements OnInit {
       let passwordModel = Object.assign({}, this.passwordForm.value)
       this.authService.updatePassword(passwordModel).subscribe(response => {
         this.toastr.info(response.message, "Şifre Güncellendi");
+        setTimeout(() => {
+          window.location.reload()
+        }, 1000);
       }, responseError => {
         this.toastr.error(responseError.error, "Hata!");
       });
@@ -87,6 +91,12 @@ export class ProfileComponent implements OnInit {
       this.user = response.data;
       this.dataLoaded = true
     })
+  }
+
+  logOut() {
+    localStorage.removeItem("token")
+    this.router.navigate(["/"]);
+    this.toastr.info("LogOut !")
   }
 
 }
