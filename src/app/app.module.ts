@@ -61,7 +61,7 @@ import { ContentUpdateComponent } from './Components/admin/content-update/conten
     NgbModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 3000,

@@ -23,6 +23,11 @@ export class ContentService {
     return this.httpClient.get<ListResponseModel<Content>>(newPath);
   }
 
+  getContentById(id: number): Observable<SingleResponseModel<Content>> {
+    let newPath = this.apiURL + "/id?id=" + id
+    return this.httpClient.get<SingleResponseModel<Content>>(newPath)
+  }
+
   getContentsDetail(): Observable<ListResponseModel<ContentDetail>> {
     let newPath = this.apiURL + "/getcontentdetails";
     return this.httpClient.get<ListResponseModel<ContentDetail>>(newPath);
@@ -40,6 +45,11 @@ export class ContentService {
 
   add(content: Content): Observable<ResponseModel> {
     let newPath = this.apiURL + "/add"
+    return this.httpClient.post<ResponseModel>(newPath, content);
+  }
+
+  update(content: Content): Observable<ResponseModel> {
+    let newPath = this.apiURL + "/update"
     return this.httpClient.post<ResponseModel>(newPath, content);
   }
 }
