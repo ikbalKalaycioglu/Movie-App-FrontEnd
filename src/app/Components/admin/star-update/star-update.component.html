@@ -1,0 +1,71 @@
+<form class="form text-center" *ngIf="starUpdateForm" [formGroup]="starUpdateForm"  >
+    <div class="title">Star Update</div>
+    <div class="subtitle">Let's update Star !</div>
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="input-container ic1">
+                <select (change)="getStarById(id.value)" formControlName="starId"  class="input form-select bg-dark" aria-label="Default select example" #id id="star">
+                    <option *ngFor="let star of star" [value]="star.starId" >
+                        {{star.firstName + star.lastName}}
+                    </option>
+                </select>
+                <div class="cut"></div>
+                <label for="star" class="placeholderr">Select Star</label>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="input-container ic1">
+                <input id="firstName" class="input" formControlName="firstName"  type="text" placeholder=" " [(ngModel)]="currentStar.firstName"  [value]="currentStar.firstName" />
+                <div class="cut"></div>
+                <label for="firstName" class="placeholderr">First Name</label>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="input-container ic1">
+                <input id="lastName" class="input" formControlName="lastName" type="text" [(ngModel)]="currentStar.lastName" placeholder=" "/>
+                <div class="cut"></div>
+                <label for="lastName" class="placeholderr">Last Name</label>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="input-container ic1">
+                <input type="date" formControlName="bornDate" id="birthday" class="input" [ngModel]="currentStar.bornDate |date:'yyyy-MM-dd'" [value]="currentStar.bornDate">
+                <div class="cut cut-short"></div>
+                <label class="placeholderr" for="birthday">Birthday</label>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="input-container ic1">
+                <select class="input form-select bg-dark" id="content" formControlName="contentId" [(ngModel)]="currentStar.contentId">
+                    <option selected *ngFor="let content of content" [value]="content.id" >
+                        {{content.title}}
+                    </option>
+                </select>
+                <div class="cut"></div>
+                <label for="category" class="placeholderr">Content Name</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="input-container ic1 description">
+                <textarea class="form-control input"  placeholder=" " [(ngModel)]="currentStar.bio"   formControlName="bio" [value]="currentStar.bio"></textarea>
+                <div class="cut"></div>
+                <label class="placeholderr">Biography</label>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-end">
+        <div class="col-md-2">
+            <button type="text" (click)="update()" class="submit">Update</button>
+        </div>
+        <div class="col-md-2">
+            <button type="text" (click)="closeStarModel()" class="submit cancel">Clear</button>
+        </div>
+    </div>
+</form>

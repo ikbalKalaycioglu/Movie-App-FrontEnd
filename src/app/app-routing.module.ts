@@ -8,6 +8,8 @@ import { ContentDeleteComponent } from './Components/admin/content-delete/conten
 import { ContentUpdateComponent } from './Components/admin/content-update/content-update.component';
 import { DirectorAddComponent } from './Components/admin/director-add/director-add.component';
 import { StarAddComponent } from './Components/admin/star-add/star-add.component';
+import { StarDeleteComponent } from './Components/admin/star-delete/star-delete.component';
+import { StarUpdateComponent } from './Components/admin/star-update/star-update.component';
 import { AllContentsComponent } from './Components/all-contents/all-contents.component';
 import { ContentDetailComponent } from './Components/content-detail/content-detail.component';
 import { ContentComponent } from './Components/content/content.component';
@@ -40,7 +42,11 @@ const routes: Routes = [
   { path: "updatecategory", component: CategoryUpdateComponent, canActivate: [LoginGuard]},
   { path: "deletecategory", component: CategoryDeleteComponent, canActivate: [LoginGuard]},
   { path: "addstar", component: StarAddComponent, canActivate: [LoginGuard]},
+  { path: "updatestar", component: StarUpdateComponent, canActivate: [LoginGuard]},
+  { path: "deletestar", component: StarDeleteComponent, canActivate: [LoginGuard]},
   { path: "adddirector", component: DirectorAddComponent, canActivate: [LoginGuard]},
+  { path: "updatedirector", component: DirectorAddComponent, canActivate: [LoginGuard]},
+  { path: "deletedirector", component: DirectorAddComponent, canActivate: [LoginGuard]},
   { path: "**", component: PageNotFoundComponent }
 ];
 

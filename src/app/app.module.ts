@@ -33,6 +33,8 @@ import { ContentUpdateComponent } from './Components/admin/content-update/conten
 import { ContentDeleteComponent } from './Components/admin/content-delete/content-delete.component';
 import { CategoryUpdateComponent } from './Components/admin/category-update/category-update.component';
 import { CategoryDeleteComponent } from './Components/admin/category-delete/category-delete.component';
+import { StarUpdateComponent } from './Components/admin/star-update/star-update.component';
+import { StarDeleteComponent } from './Components/admin/star-delete/star-delete.component';
 
 
 @NgModule({
@@ -60,6 +62,8 @@ import { CategoryDeleteComponent } from './Components/admin/category-delete/cate
     ContentDeleteComponent,
     CategoryUpdateComponent,
     CategoryDeleteComponent,
+    StarUpdateComponent,
+    StarDeleteComponent,
   ],
   imports: [
     BrowserModule,
