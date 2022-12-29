@@ -26,13 +26,6 @@ export class StarDeleteComponent implements OnInit {
     this.getStar()
   }
 
-  getStarById(id: string) {
-    let newId = Number(id)
-    this.starService.getStarById(newId).subscribe(response => {
-      this.currentStar = response.data
-    })
-  }
-
   getStar() {
     this.starService.getStar().subscribe(response => {
       this.star = response.data

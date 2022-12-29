@@ -1,0 +1,22 @@
+<form class="form text-center">
+    <div class="title">Director Delete</div>
+    <div class="subtitle">Let's delete Director !</div>
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="input-container ic1" >
+                <select (change)="(title.value)" [(ngModel)]="currentDirector.directorId" [ngModelOptions]="{standalone: true}" class="input form-select bg-dark" aria-label="Default select example" #title id="content">
+                    <option *ngFor="let director of director" [value]="director.directorId" >
+                        {{director.firstName + " " + director.lastName}}
+                    </option>
+                </select>
+                <div class="cut"></div>
+                <label for="content" class="placeholderr">Select Director</label>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-end">
+        <div class="col-md-2">
+            <button type="text" (click)="remove(currentDirector.directorId)" class="submit">Delete</button>
+        </div>
+    </div>
+</form>

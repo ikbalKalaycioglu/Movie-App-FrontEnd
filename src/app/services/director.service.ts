@@ -26,6 +26,16 @@ export class DirectorService {
     return this.httpClient.get<ListResponseModel<DirectorDetail>>(newPath);
   }
 
+  getDirectors(): Observable<ListResponseModel<Director>>{
+    let newPath = this.apiURL + "getall"
+    return this.httpClient.get<ListResponseModel<Director>>(newPath);
+  }
+
+  getDirectorById(id: number): Observable<SingleResponseModel<Director>>{
+    let newPath = this.apiURL + "getById?id=" + id
+    return this.httpClient.get<SingleResponseModel<Director>>(newPath)
+  }
+
   getDetailsById(directorId: number): Observable<SingleResponseModel<DirectorDetail>> {
     let newPath = this.apiURL + "GetDetailsById?id=" + directorId
     return this.httpClient.get<SingleResponseModel<DirectorDetail>>(newPath);
@@ -34,5 +44,15 @@ export class DirectorService {
   add(director: Director): Observable<ResponseModel> {
     let newPath = this.apiURL + "add"
     return this.httpClient.post<ResponseModel>(newPath, director);
+  }
+
+  update(director: Director): Observable<ResponseModel>{
+    let newPath = this.apiURL + "update"
+    return this.httpClient.post<ResponseModel>(newPath, director);
+  }
+
+  remove(id: number): Observable<ResponseModel>{
+    let newPath = this.apiURL + "delete?id=" + id
+    return this.httpClient.post<ResponseModel>(newPath, id);
   }
 }
