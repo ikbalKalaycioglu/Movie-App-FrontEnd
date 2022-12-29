@@ -52,4 +52,10 @@ export class ContentService {
     let newPath = this.apiURL + "/update"
     return this.httpClient.post<ResponseModel>(newPath, content);
   }
+
+  remove(id: number): Observable<ResponseModel> {
+    let newPath = this.apiURL + "/delete?id=" + id
+    return this.httpClient.post<ResponseModel>(newPath,id);
+
+  }
 }

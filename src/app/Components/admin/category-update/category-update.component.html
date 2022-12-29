@@ -1,0 +1,34 @@
+<form class="form text-center" *ngIf="categoryUpdateForm" [formGroup]="categoryUpdateForm">
+    <div class="title">Category Update</div>
+    <div class="subtitle">Let's update Category !</div>
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="input-container ic1">
+                <select (change)="getCategoryById(title.value)" formControlName="id" class="input form-select bg-dark" aria-label="Default select example" #title id="content">
+                    <option *ngFor="let categorys of category" [value]="categorys.id" >
+                        {{categorys.name}}
+                    </option>
+                </select>
+                <div class="cut"></div>
+                <label for="content" class="placeholderr">Select Category</label>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="input-container ic1">
+                <input id="name" formControlName="name" class="input" type="text" placeholder=" " [(ngModel)]="currentCategory.name" />
+                <div class="cut cut-short"></div>
+                <label for="name" class="placeholderr">Name</label>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-end">
+        <div class="col-md-2">
+            <button type="text" (click)="update()" class="submit">Update</button>
+        </div>
+        <div class="col-md-2">
+            <button type="text" (click)="closeCategoryModel()" class="submit cancel">Clear</button>
+        </div>
+    </div>
+</form>

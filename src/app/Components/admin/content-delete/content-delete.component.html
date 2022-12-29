@@ -1,0 +1,22 @@
+<form class="form text-center">
+    <div class="title">Content Delete</div>
+    <div class="subtitle">Let's delete Content !</div>
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="input-container ic1" >
+                <select (change)="(title.value)" [(ngModel)]="currentContent.id" [ngModelOptions]="{standalone: true}" class="input form-select bg-dark" aria-label="Default select example" #title id="content">
+                    <option *ngFor="let content of content" [value]="content.id" >
+                        {{content.title}}
+                    </option>
+                </select>
+                <div class="cut"></div>
+                <label for="content" class="placeholderr">Select Content</label>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-end">
+        <div class="col-md-2">
+            <button type="text" (click)="remove(currentContent.id)" class="submit">Delete</button>
+        </div>
+    </div>
+</form>

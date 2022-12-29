@@ -29,4 +29,14 @@ export class CategoryService {
     let newPath = this.apiURL + "add"
     return this.httpClient.post<ResponseModel>(newPath, category);
   }
+
+  update(category: Category): Observable<ResponseModel> {
+    let newPath = this.apiURL + "update"
+    return this.httpClient.post<ResponseModel>(newPath, category);
+  }
+
+  remove(id: number): Observable<ResponseModel> {
+    let newPath = this.apiURL + "delete?id=" + id
+    return this.httpClient.post<ResponseModel>(newPath, id);
+  }
 }

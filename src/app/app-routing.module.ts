@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CategoryAddComponent } from './Components/admin/category-add/category-add.component';
+import { CategoryDeleteComponent } from './Components/admin/category-delete/category-delete.component';
+import { CategoryUpdateComponent } from './Components/admin/category-update/category-update.component';
 import { ContentAddComponent } from './Components/admin/content-add/content-add.component';
+import { ContentDeleteComponent } from './Components/admin/content-delete/content-delete.component';
 import { ContentUpdateComponent } from './Components/admin/content-update/content-update.component';
 import { DirectorAddComponent } from './Components/admin/director-add/director-add.component';
 import { StarAddComponent } from './Components/admin/star-add/star-add.component';
@@ -32,7 +35,10 @@ const routes: Routes = [
   { path: "profile", component: ProfileComponent , canActivate: [LoginGuard]},
   { path: "addcontent", component: ContentAddComponent, canActivate: [LoginGuard]},
   { path: "updatecontent", component: ContentUpdateComponent, canActivate: [LoginGuard]},
+  { path: "deletecontent", component: ContentDeleteComponent, canActivate: [LoginGuard]},
   { path: "addcategory", component: CategoryAddComponent, canActivate: [LoginGuard]},
+  { path: "updatecategory", component: CategoryUpdateComponent, canActivate: [LoginGuard]},
+  { path: "deletecategory", component: CategoryDeleteComponent, canActivate: [LoginGuard]},
   { path: "addstar", component: StarAddComponent, canActivate: [LoginGuard]},
   { path: "adddirector", component: DirectorAddComponent, canActivate: [LoginGuard]},
   { path: "**", component: PageNotFoundComponent }

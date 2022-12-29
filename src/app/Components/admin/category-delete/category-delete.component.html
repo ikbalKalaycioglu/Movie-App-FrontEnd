@@ -1,0 +1,22 @@
+<form class="form text-center">
+    <div class="title">Category Delete</div>
+    <div class="subtitle">Let's delete Category !</div>
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="input-container ic1" >
+                <select (change)="(title.value)" [(ngModel)]="currentCategory.id" [ngModelOptions]="{standalone: true}" class="input form-select bg-dark" aria-label="Default select example" #title id="category">
+                    <option *ngFor="let category of category" [value]="category.id" >
+                        {{category.name}}
+                    </option>
+                </select>
+                <div class="cut"></div>
+                <label for="content" class="placeholderr">Select Category</label>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-end">
+        <div class="col-md-2">
+            <button type="text" (click)="remove(currentCategory.id)" class="submit">Delete</button>
+        </div>
+    </div>
+</form>

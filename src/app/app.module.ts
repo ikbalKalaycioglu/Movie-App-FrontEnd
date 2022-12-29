@@ -30,6 +30,9 @@ import { CategoryAddComponent } from './Components/admin/category-add/category-a
 import { StarAddComponent } from './Components/admin/star-add/star-add.component';
 import { DirectorAddComponent } from './Components/admin/director-add/director-add.component';
 import { ContentUpdateComponent } from './Components/admin/content-update/content-update.component';
+import { ContentDeleteComponent } from './Components/admin/content-delete/content-delete.component';
+import { CategoryUpdateComponent } from './Components/admin/category-update/category-update.component';
+import { CategoryDeleteComponent } from './Components/admin/category-delete/category-delete.component';
 
 
 @NgModule({
@@ -54,6 +57,9 @@ import { ContentUpdateComponent } from './Components/admin/content-update/conten
     StarAddComponent,
     DirectorAddComponent,
     ContentUpdateComponent,
+    ContentDeleteComponent,
+    CategoryUpdateComponent,
+    CategoryDeleteComponent,
   ],
   imports: [
     BrowserModule,
