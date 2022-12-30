@@ -23,7 +23,7 @@
     <div class="row justify-content-center">
       <div class="col-8 px-0">
         <div class="ratio ratio-16x9">
-          <iframe class="youtube-frame" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" title="YouTube video" allowfullscreen></iframe>
+          <iframe class="youtube-frame" [src]="contentDetail.playbackURL | safe:'resourceUrl'" title="YouTube video" allowfullscreen></iframe>
         </div>
       </div>
       <div class="col-4 px-0 bg-dark">

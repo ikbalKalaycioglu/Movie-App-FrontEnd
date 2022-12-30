@@ -37,6 +37,7 @@ import { StarUpdateComponent } from './Components/admin/star-update/star-update.
 import { StarDeleteComponent } from './Components/admin/star-delete/star-delete.component';
 import { DirectorUpdateComponent } from './Components/admin/director-update/director-update.component';
 import { DirectorDeleteComponent } from './Components/admin/director-delete/director-delete.component';
+import { SafePipe } from './pipes/safe.pipe';
 
 
 @NgModule({
@@ -68,6 +69,7 @@ import { DirectorDeleteComponent } from './Components/admin/director-delete/dire
     StarDeleteComponent,
     DirectorUpdateComponent,
     DirectorDeleteComponent,
+    SafePipe,
   ],
   imports: [
     BrowserModule,

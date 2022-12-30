@@ -43,9 +43,9 @@ export class ContentService {
     return this.httpClient.get<ListResponseModel<ContentDetail>>(newPath);
   }
 
-  add(content: Content): Observable<ResponseModel> {
+  add(content: Content): Observable<SingleResponseModel<number>> {
     let newPath = this.apiURL + "/add"
-    return this.httpClient.post<ResponseModel>(newPath, content);
+    return this.httpClient.post<SingleResponseModel<number>>(newPath, content);
   }
 
   update(content: Content): Observable<ResponseModel> {

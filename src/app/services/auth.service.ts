@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 import { LoginModel } from '../models/login';
@@ -15,7 +16,8 @@ import { UserPasswordModel } from '../models/userPassword';
 export class AuthService {
 
   apiURL = "https://localhost:44341/api/auth/"
-  constructor(private httpClient: HttpClient, private jwtHelperService: JwtHelperService) { }
+
+  constructor(private httpClient: HttpClient, private jwtHelperService: JwtHelperService, private router: Router) { }
 
   register(registerModel: RegisterModel): Observable<SingleResponseModel<TokenModel>> {
     let newPath = this.apiURL + "register"
@@ -28,8 +30,16 @@ export class AuthService {
   }
 
   isAuthenticated() {
-    if (localStorage.getItem("token")) {
-      return true;
+    let token = localStorage.getItem("token");
+    if (token) {
+      if (this.jwtHelperService.isTokenExpired(token)) {
+        this.router.navigate(["/login"])
+        this.logOut();
+        return false;
+      }
+      else {
+        return true;
+      }
     }
     else {
       return false;
