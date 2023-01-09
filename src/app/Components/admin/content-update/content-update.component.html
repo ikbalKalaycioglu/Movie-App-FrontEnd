@@ -8,7 +8,7 @@
                             <div class="row">
                                 <div id="AddCarImagesCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
                                     <div class="carousel-indicators">
-                                        <button *ngFor="let carImage of carImagesPaths; let i = index" type="button" data-bs-target="#AddCarImagesCarousel" attr.data-bs-slide-to="{{i}}"
+                                        <button *ngFor="let poster of poster; let i = index" type="button" data-bs-target="#AddCarImagesCarousel" attr.data-bs-slide-to="{{i}}"
                                             class="{{(i == 0) ? 'active' : ''}}" attr.aria-label="Slide {{i}}"></button>
                                     </div>
                                     <div class="carousel-inner">
@@ -70,8 +70,8 @@
     <div class="row justify-content-center">
         <div class="col-md-4">
             <div class="input-container ic1">
-                <select (change)="getContentById(title.value)" formControlName="id" class="input form-select bg-dark" aria-label="Default select example" #title id="content">
-                    <option *ngFor="let content of content" [value]="content.id" >
+                <select (change)="getContentById(title.value);getPosterByContentId(title.value)" formControlName="id" class="input form-select bg-dark" aria-label="Default select example" #title id="content">
+                    <option *ngFor="let content of content" [value]="content.id">
                         {{content.title}}
                     </option>
                 </select>
@@ -137,7 +137,8 @@
     <div class="row justify-content-center">
         <div class="col-md-5">
             <div class="input-container ic1 description">
-                <textarea class="form-control input" id="floatingTextarea2" style="height: 100px" formControlName="description" placeholder=" " [(ngModel)]="currentContent.description" [value]="currentContent.description"></textarea>
+                <textarea class="form-control input" id="floatingTextarea2" style="height: 100px" formControlName="description" placeholder=" " [(ngModel)]="currentContent.description"
+                    [value]="currentContent.description"></textarea>
                 <div class="cut"></div>
                 <label for="Genre" class="placeholderr">Description</label>
             </div>

@@ -3,12 +3,11 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ToastrService } from 'ngx-toastr';
 import { Category } from 'src/app/models/category';
 import { Content } from 'src/app/models/content';
-import { DirectorDetail } from 'src/app/models/directorDetail';
-import { StarDetail } from 'src/app/models/starDetail';
+import { Poster } from 'src/app/models/poster';
+import { UploadFile } from 'src/app/models/uploadedFile';
 import { CategoryService } from 'src/app/services/category.service';
 import { ContentService } from 'src/app/services/content.service';
-import { DirectorService } from 'src/app/services/director.service';
-import { StarService } from 'src/app/services/star.service';
+import { PosterService } from 'src/app/services/poster.service';
 
 @Component({
   selector: 'app-content-update',
@@ -20,6 +19,7 @@ export class ContentUpdateComponent implements OnInit {
   contentUpdateForm!: FormGroup
   category: Category[] = []
   content: Content[] = []
+  poster: Poster[] = []
   currentContent: Content = {
     id: 0,
     categoryId: 0,
@@ -34,7 +34,7 @@ export class ContentUpdateComponent implements OnInit {
   imdbRating = new FormControl(5);
 
 
-  constructor(private toastr: ToastrService, private contentService: ContentService, private categoryService: CategoryService, private formBuilder: FormBuilder) { }
+  constructor(private toastr: ToastrService, private contentService: ContentService, private categoryService: CategoryService, private formBuilder: FormBuilder, private posterService: PosterService) { }
 
   ngOnInit(): void {
     this.createContentUpdateForm()
@@ -44,7 +44,7 @@ export class ContentUpdateComponent implements OnInit {
 
   createContentUpdateForm() {
     this.contentUpdateForm = this.formBuilder.group({
-      id:["",Validators.required],
+      id: ["", Validators.required],
       title: ["", Validators.required],
       description: ["", Validators.required],
       imDbRating: new FormControl(null),
@@ -74,6 +74,13 @@ export class ContentUpdateComponent implements OnInit {
     })
   }
 
+  getPosterByContentId(id: string) {
+    let newId = Number(id);
+    this.posterService.getByContentId(newId).subscribe(response => {
+      this.poster = response.data;
+    })
+  }
+
   update() {
     this.contentUpdateForm.get('imDbRating')?.setValue(this.imdbRating.value);
     if (this.contentUpdateForm.valid) {
@@ -100,5 +107,29 @@ export class ContentUpdateComponent implements OnInit {
   }
 
 
+  // private addPosterToPosterPaths(image: any): Promise<boolean> {
+  //   return new Promise<boolean>((result) => {
+  //     this.checkFileMimeType(image).then((successStatus) => {
+  //       if (successStatus) {
+  //         var reader = new FileReader();
+  //         reader.readAsDataURL(image);
+  //         reader.onload = (_event) => {
+  //           this.uploadImagesPaths.push(reader.result);
+  //           result(true);
+  //         }
+  //       } else {
+  //         this.toastr.error("Yalnızca resim dosyası yükleyebilirsiniz", "Dosya eklenmedi");
+  //         result(false);
+  //       }
+  //     })
+  //   })
+  // }
+
+  // private checkFileMimeType(file: any): Promise<boolean> {
+  //   return new Promise<boolean>((methodResolve) => {
+  //     var mimeType = file.type;
+  //     methodResolve(mimeType.match(/image\/*/) != null);
+  //   })
+  // }
 
 }

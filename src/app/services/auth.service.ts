@@ -33,7 +33,7 @@ export class AuthService {
     let token = localStorage.getItem("token");
     if (token) {
       if (this.jwtHelperService.isTokenExpired(token)) {
-        this.router.navigate(["/login"])
+        this.router.navigate(["/"])
         this.logOut();
         return false;
       }

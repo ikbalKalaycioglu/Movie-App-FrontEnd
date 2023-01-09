@@ -10,8 +10,6 @@ import { UserUpdateName } from '../models/userUpdateName';
   providedIn: 'root'
 })
 export class UserService {
-  passwordHash: string = ""
-  passwordSalt: string = ""
   apiURL = "https://localhost:44341/api/User/"
 
   constructor(private httpClient: HttpClient) { }

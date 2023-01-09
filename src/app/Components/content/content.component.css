@@ -4,7 +4,7 @@ a {
 }
 
 a h3:hover {
-    color: #03a9f4;
+    color: orange;
 }   
 
 
@@ -96,9 +96,15 @@ a h3:hover {
     display: table-cell;
 }
 
-.bi-info-circle,.bi-emoji-frown {
+.bi-bookmark-plus,.bi-emoji-frown {
     float: right;
-    font-size: 23px;
+    font-size: 28px;
+    color: orange;
+}
+
+.bi-bookmark-plus:hover{
+    cursor: pointer;
+    color: yellow;
 }
 
 

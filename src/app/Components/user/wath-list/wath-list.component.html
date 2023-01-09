@@ -1,0 +1,41 @@
+<div class="container my-3 bg-dark" *ngFor="let content of watchList">
+    <div class="row">
+        <div class="col-md-1 route">
+            <i data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="bi bi-trash" (click)="deletedId = content.id"></i>
+        </div>
+        <div class="col-md-2 section"><a><img class="poster py-3" [src]="content.posterPath !== null ? posterURL+content.posterPath :'https://localhost:44341/images/defaultImage.jpg'"></a></div>
+        <div class="col-md-8 p-4">
+            <div class="row title">
+                <h3>{{content.title}}</h3>
+            </div>
+            <div class="row imdb">
+                <span>Imdb Rating : <span> {{content.imDbRating}} <i class="bi bi-star-fill"></i></span></span>
+            </div>
+            <div class="row description">
+                <span>{{content.description}}</span>
+            </div>
+        </div>
+        <div class="col-md-1 route">
+            <a routerLink="/content/{{content.contentId}}"><i class="bi bi-arrow-right"></i></a>
+        </div>
+    </div>
+    
+</div>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete from Watchlist ?</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete from watchlist ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="removeContent(deletedId)">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

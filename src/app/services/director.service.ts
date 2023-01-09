@@ -41,9 +41,9 @@ export class DirectorService {
     return this.httpClient.get<SingleResponseModel<DirectorDetail>>(newPath);
   }
 
-  add(director: Director): Observable<ResponseModel> {
+  add(director: Director): Observable<SingleResponseModel<number>> {
     let newPath = this.apiURL + "add"
-    return this.httpClient.post<ResponseModel>(newPath, director);
+    return this.httpClient.post<SingleResponseModel<number>>(newPath, director);
   }
 
   update(director: Director): Observable<ResponseModel>{

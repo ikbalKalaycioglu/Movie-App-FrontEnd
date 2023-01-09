@@ -42,9 +42,9 @@ export class StarService {
     return this.httpClient.get<ListResponseModel<Star>>(newPath);
   }
 
-  add(star: Star): Observable<ResponseModel> {
+  add(star: Star): Observable<SingleResponseModel<number>> {
     let newPath = this.apiURL + "add";
-    return this.httpClient.post<ResponseModel>(newPath, star);
+    return this.httpClient.post<SingleResponseModel<number>>(newPath, star);
   }
 
   update(star: Star): Observable<ResponseModel> {

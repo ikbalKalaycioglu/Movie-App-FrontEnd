@@ -38,6 +38,7 @@ import { StarDeleteComponent } from './Components/admin/star-delete/star-delete.
 import { DirectorUpdateComponent } from './Components/admin/director-update/director-update.component';
 import { DirectorDeleteComponent } from './Components/admin/director-delete/director-delete.component';
 import { SafePipe } from './pipes/safe.pipe';
+import { WathListComponent } from './Components/user/wath-list/wath-list.component';
 
 
 @NgModule({
@@ -70,6 +71,7 @@ import { SafePipe } from './pipes/safe.pipe';
     DirectorUpdateComponent,
     DirectorDeleteComponent,
     SafePipe,
+    WathListComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,7 +84,7 @@ import { SafePipe } from './pipes/safe.pipe';
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-bottom-right',
-      preventDuplicates: true,
+      preventDuplicates: false,
       closeButton: false,
       progressAnimation: 'increasing',
       progressBar: true,

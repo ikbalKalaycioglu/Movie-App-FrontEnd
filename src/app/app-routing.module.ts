@@ -23,6 +23,7 @@ import { ProfileComponent } from './Components/profile/profile.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { StarDetailComponent } from './Components/star-detail/star-detail.component';
 import { StarComponent } from './Components/star/star.component';
+import { WathListComponent } from './Components/user/wath-list/wath-list.component';
 import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: "stardetail/:starId", component: StarDetailComponent},
   { path: "register", component: RegisterComponent },
   { path: "login", component: LoginComponent },
+  { path: "watchList", component: WathListComponent , canActivate:[LoginGuard] },
   { path: "profile", component: ProfileComponent , canActivate: [LoginGuard]},
   { path: "addcontent", component: ContentAddComponent, canActivate: [LoginGuard]},
   { path: "updatecontent", component: ContentUpdateComponent, canActivate: [LoginGuard]},

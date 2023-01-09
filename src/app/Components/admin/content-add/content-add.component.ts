@@ -2,15 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Category } from 'src/app/models/category';
-import { Content } from 'src/app/models/content';
-import { DirectorDetail } from 'src/app/models/directorDetail';
-import { StarDetail } from 'src/app/models/starDetail';
 import { UploadFile } from 'src/app/models/uploadedFile';
 import { CategoryService } from 'src/app/services/category.service';
 import { ContentService } from 'src/app/services/content.service';
-import { DirectorService } from 'src/app/services/director.service';
 import { PosterService } from 'src/app/services/poster.service';
-import { StarService } from 'src/app/services/star.service';
 
 @Component({
   selector: 'app-content-add',
@@ -20,17 +15,13 @@ import { StarService } from 'src/app/services/star.service';
 export class ContentAddComponent implements OnInit {
 
   contentAddForm!: FormGroup
-  currentContent!: Content
   category: Category[] = []
-  star: StarDetail[] = []
-  director: DirectorDetail[] = []
   imdbRating = new FormControl(5);
-  poster!: File;
   contentImagesFiles: UploadFile[] = []
   contentImagesPaths: any[] = []
 
 
-  constructor(private toastr: ToastrService, private contentService: ContentService, private categoryService: CategoryService, private formBuilder: FormBuilder, private starService: StarService, private directorService: DirectorService, private posterService: PosterService) { }
+  constructor(private toastr: ToastrService, private contentService: ContentService, private categoryService: CategoryService, private formBuilder: FormBuilder, private posterService: PosterService) { }
 
   ngOnInit(): void {
     this.createContentAddForm()
@@ -59,6 +50,7 @@ export class ContentAddComponent implements OnInit {
     this.contentAddForm.get('imDbRating')?.setValue(this.imdbRating.value);
     if (!this.contentAddForm.valid) {
       this.toastr.error("Formunuz hatalı", "Geçersiz form");
+      console.log(this.contentImagesFiles)
     } else {
       let contentModel = Object.assign({}, this.contentAddForm.value)
       this.contentService.add(contentModel).subscribe(response => {
@@ -92,10 +84,6 @@ export class ContentAddComponent implements OnInit {
     }
   }
 
-  closeContentModel() {
-    this.contentAddForm.reset();
-  }
-
   private uploadAllImagesToServer(uploadFiles: UploadFile[], contentId: number): Promise<UploadFile[]> {
     return new Promise<UploadFile[]>((methodResolve) => {
       if (uploadFiles.length > 0) {
@@ -127,10 +115,10 @@ export class ContentAddComponent implements OnInit {
 
   private uploadImageToServer(uploadFile: UploadFile, contentId: number): Promise<UploadFile> {
     return new Promise<UploadFile>((result) => {
-      this.posterService.add(uploadFile.file, contentId).subscribe((uploadSuccess) => {
+      this.posterService.add(uploadFile.file, contentId).subscribe(() => {
         uploadFile.uploadedStatus = true;
         result(uploadFile);
-      }, (uploadFail) => {
+      }, () => {
         uploadFile.uploadedStatus = false;
         result(uploadFile);
       })
@@ -167,7 +155,7 @@ export class ContentAddComponent implements OnInit {
     }
   }
 
-  private addPosterToPosterPaths(image: any): Promise<boolean> { //Source: https://www.talkingdotnet.com/show-image-preview-before-uploading-using-angular-7/
+  private addPosterToPosterPaths(image: any): Promise<boolean> {
     return new Promise<boolean>((result) => {
       this.checkFileMimeType(image).then((successStatus) => {
         if (successStatus) {
@@ -190,6 +178,10 @@ export class ContentAddComponent implements OnInit {
       var mimeType = file.type;
       methodResolve(mimeType.match(/image\/*/) != null);
     })
+  }
+
+  closeContentModel() {
+    this.contentAddForm.reset();
   }
 
 }

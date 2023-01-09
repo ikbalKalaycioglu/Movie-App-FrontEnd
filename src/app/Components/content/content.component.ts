@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Category } from 'src/app/models/category';
 import { Content } from 'src/app/models/content';
 import { ContentDetail } from 'src/app/models/contentDetail';
+import { WatchList } from 'src/app/models/watchList';
+import { AuthService } from 'src/app/services/auth.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { ContentService } from 'src/app/services/content.service';
+import { WatchListService } from 'src/app/services/watch-list.service';
 
 
 @Component({
@@ -26,7 +30,7 @@ export class ContentComponent implements OnInit {
 
   posterURL = "https://localhost:44341/images/"
 
-  constructor(private contentService: ContentService, private categoryService: CategoryService, private activatedRoute: ActivatedRoute) { 
+  constructor(private contentService: ContentService, private categoryService: CategoryService, private activatedRoute: ActivatedRoute, private watchListService: WatchListService ,private authService:AuthService,private router:Router,private toastr:ToastrService) {
     window.addEventListener('scroll', () => {
       this.windowScrolled = window.pageYOffset !== 0;
     });
@@ -66,14 +70,22 @@ export class ContentComponent implements OnInit {
     })
   }
 
-
-
-  StarTimeOut() {
-    setTimeout(() => {
-      this.dataLoaded = true;
-    }, 1500);
-
+  addToWatchList(id: number) {
+    if (this.authService.isAuthenticated()) {
+      let watchListModel: WatchList = {
+        contentId : id,
+        userId: this.authService.getCurrentUserId
+      }
+      this.watchListService.add(watchListModel).subscribe(response => {
+        this.toastr.success(response.message,"Content Added to Watchlist")
+      })
+    }
+    else {
+      this.toastr.info("You must Login","Info !")
+      this.router.navigate(["/login"]);
+    }
   }
+  
 
   scrollToTop(): void {
     window.scrollTo(0, 0);
