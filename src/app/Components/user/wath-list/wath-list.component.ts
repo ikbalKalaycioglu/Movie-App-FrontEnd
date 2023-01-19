@@ -18,6 +18,7 @@ export class WathListComponent implements OnInit {
   notWatchedList: WatchListDto[] = []
   deletedId: number = -1;
   posterURL = "https://localhost:44341/images/"
+  change: boolean = true;
 
   constructor(private toastr: ToastrService, private authService: AuthService, private userService: UserService, private watchListService: WatchListService) { }
 
@@ -50,7 +51,6 @@ export class WathListComponent implements OnInit {
   changeWatched(watchList: WatchList) {
     this.watchListService.changeWatched(watchList).subscribe(response => {
       this.toastr.success(response.message, "Succesful !")
-      console.log()
     })
   }
 

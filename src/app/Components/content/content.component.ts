@@ -38,7 +38,7 @@ export class ContentComponent implements OnInit {
 
 
   ngOnInit() {
-    this.getContentsDetail();
+      this.getContentsDetail();
 
     this.activatedRoute.params.subscribe(params => {
       if (params["categoryId"]) {
@@ -78,6 +78,8 @@ export class ContentComponent implements OnInit {
       }
       this.watchListService.add(watchListModel).subscribe(response => {
         this.toastr.success(response.message,"Content Added to Watchlist")
+      }, responseError => {
+        this.toastr.error(responseError.error.message,"Error !")
       })
     }
     else {

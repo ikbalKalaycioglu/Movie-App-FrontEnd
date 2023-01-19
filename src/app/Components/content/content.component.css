@@ -96,10 +96,14 @@ a h3:hover {
     display: table-cell;
 }
 
-.bi-bookmark-plus,.bi-emoji-frown {
+.bi-bookmark-plus {
     float: right;
     font-size: 28px;
     color: orange;
+}
+.bi-emoji-frown{
+    float: right;
+    font-size: 28px;
 }
 
 .bi-bookmark-plus:hover{

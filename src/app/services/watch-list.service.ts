@@ -28,4 +28,9 @@ export class WatchListService {
     let newPath = this.apiURL + "delete?id=" + id
     return this.httpClient.post<ResponseModel>(newPath, id)
   }
+
+  changeWatched(watchList: WatchList): Observable<ResponseModel>{
+    let newPath = this.apiURL + "ChangeWatched"
+    return this.httpClient.post<ResponseModel>(newPath, watchList);
+  }
 }

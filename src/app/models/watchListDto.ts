@@ -6,5 +6,6 @@ export interface WatchListDto{
     description: string,
     imDbRating: number,
     genre: string,
-    posterPath:string
+    posterPath: string,
+    watched : boolean,
 }

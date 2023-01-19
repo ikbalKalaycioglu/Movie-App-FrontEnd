@@ -41,6 +41,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 6%;
+}
+
+.gotoroute{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 13%;
 }
 
 .poster {
@@ -66,5 +74,10 @@
 
 .btn-close{
     background-color: white;
+}
+
+.upnavbar{
+    height: 50px;
+    justify-content: center;
 }
 
