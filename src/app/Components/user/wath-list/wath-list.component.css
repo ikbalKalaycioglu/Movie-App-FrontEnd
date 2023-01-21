@@ -3,22 +3,22 @@
     color: orange;
 }
 
-
-
-.bi-trash{
+.bi-trash {
     font-size: 40px;
     color: rgb(185, 53, 53);
 }
 
-.bi-star-fill{
+.bi-star-fill {
     color: orange;
 }
 
-.bi-trash:hover,.bi-arrow-right:hover{
+.bi-trash:hover,
+.bi-arrow-right:hover {
     cursor: pointer;
     color: wheat;
 }
-.container:hover{
+
+.container:hover {
     -webkit-transform: scale(1.03);
     transform: scale(1.03);
     box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08);
@@ -44,7 +44,7 @@
     width: 6%;
 }
 
-.gotoroute{
+.gotoroute {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,27 +57,83 @@
     object-fit: cover;
 }
 
-.row span{
+.row span {
     color: rgba(255, 255, 255, 0.5);
     font-size: 20px;
     margin: 10px;
 }
 
 .modal-content {
-	background-color: #1e2229;
+    background-color: #1e2229;
 }
 
 .modal-content .modal-header,
 .modal-content .modal-footer {
-	border-color: #424242;
+    border-color: #424242;
 }
 
-.btn-close{
+.btn-close {
     background-color: white;
 }
 
-.upnavbar{
-    height: 50px;
-    justify-content: center;
+
+.links {
+    background-color: #123;
+    background-image: linear-gradient(to bottom, #0003, transparent);
+    border-bottom: 1px solid #0003;
+    box-shadow: 0 0 32px #0003;
+    font-size: 2em;
 }
 
+.links>a {
+    color: #9ab;
+    padding: .25em;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all .5s;
+}
+
+.links>a:hover {
+    background: #ffffff06;
+    color: #adf;
+}
+
+.links>.line {
+    background: #68a;
+    height: 1px;
+    pointer-events: none;
+}
+
+
+.links {
+    display: grid;
+    grid-template-columns: repeat(var(--items), 1fr);
+    position: relative;
+}
+
+.links>.line {
+    opacity: 0;
+    transition: all .5s;
+    position: absolute;
+    bottom: 0;
+    left: var(--left, calc(100% / var(--items) * (var(--index) - 1)));
+    width: var(--width, calc(100% / var(--items)));
+    --index: 0;
+}
+
+.links>a:hover~.line {
+    opacity: 1;
+}
+
+.links>a:nth-of-type(1):hover~.line {
+    --index: 1;
+}
+
+.links>a:nth-of-type(2):hover~.line {
+    --index: 2;
+}
+
+.links>a:last-of-type:hover~.line {
+    --index: var(--items);
+}

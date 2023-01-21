@@ -5,7 +5,7 @@ a {
 
 a h3:hover {
     color: #03a9f4;
-}   
+}
 
 
 .container {
@@ -60,7 +60,7 @@ a h3:hover {
     font-size: 30px;
 }
 
-.bi-play{
+.bi-play {
     text-align: center;
     vertical-align: middle;
     margin: 0 auto;
@@ -68,6 +68,17 @@ a h3:hover {
     font-size: 60px;
     text-shadow: 0px 0px 20px #6abcea, 0px 5px 20px #6ABCEA;
     opacity: 1;
+}
+
+.bi-bookmark-plus {
+    float: right;
+    font-size: 28px;
+    color: orange;
+}
+
+.bi-bookmark-plus:hover {
+    cursor: pointer;
+    color: yellow;
 }
 
 .movie-card:hover {
@@ -96,7 +107,8 @@ a h3:hover {
     display: table-cell;
 }
 
-.bi-info-circle,.bi-emoji-frown {
+.bi-info-circle,
+.bi-emoji-frown {
     float: right;
     font-size: 23px;
 }
@@ -155,6 +167,7 @@ a h3:hover {
         margin: 0;
     }
 }
+
 .container-text {
     display: flex;
     flex-wrap: wrap;
@@ -174,4 +187,12 @@ a h3:hover {
     text-transform: inherit;
     letter-spacing: .00735rem;
     color: orange;
+}
+
+.my-pagination ::ng-deep .ngx-pagination .current {
+    --size: 32px;
+    font-size: 13px;
+    border-radius: 6px;
+    background: #202020;
+    cursor: pointer;
 }

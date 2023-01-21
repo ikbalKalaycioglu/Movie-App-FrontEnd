@@ -56,6 +56,5 @@ export class ContentService {
   remove(id: number): Observable<ResponseModel> {
     let newPath = this.apiURL + "/delete?id=" + id
     return this.httpClient.post<ResponseModel>(newPath,id);
-
   }
 }

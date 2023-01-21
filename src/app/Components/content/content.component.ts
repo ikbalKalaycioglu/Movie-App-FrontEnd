@@ -28,9 +28,13 @@ export class ContentComponent implements OnInit {
   dataLoaded = false;
   windowScrolled = false;
 
+  totalContent: any;
+  p: number = 1;
+  itemPerPage: number = 8;
+
   posterURL = "https://localhost:44341/images/"
 
-  constructor(private contentService: ContentService, private categoryService: CategoryService, private activatedRoute: ActivatedRoute, private watchListService: WatchListService ,private authService:AuthService,private router:Router,private toastr:ToastrService) {
+  constructor(private contentService: ContentService, private categoryService: CategoryService, private activatedRoute: ActivatedRoute, private watchListService: WatchListService, private authService: AuthService, private router: Router, private toastr: ToastrService) {
     window.addEventListener('scroll', () => {
       this.windowScrolled = window.pageYOffset !== 0;
     });
@@ -38,7 +42,7 @@ export class ContentComponent implements OnInit {
 
 
   ngOnInit() {
-      this.getContentsDetail();
+    this.getContentsDetail();
 
     this.activatedRoute.params.subscribe(params => {
       if (params["categoryId"]) {
@@ -48,12 +52,14 @@ export class ContentComponent implements OnInit {
     })
   }
 
+  
 
   getContentsDetail() {
     this.contentService.getContentsDetail().subscribe(response => {
       this.contentDetail = response.data
       this.dataLoaded = true;
     })
+    this.totalContent = this.contentDetail.length;
   }
 
 
@@ -73,21 +79,22 @@ export class ContentComponent implements OnInit {
   addToWatchList(id: number) {
     if (this.authService.isAuthenticated()) {
       let watchListModel: WatchList = {
-        contentId : id,
-        userId: this.authService.getCurrentUserId
+        contentId: id,
+        userId: this.authService.getCurrentUserId,
+        watched: false
       }
       this.watchListService.add(watchListModel).subscribe(response => {
-        this.toastr.success(response.message,"Content Added to Watchlist")
+        this.toastr.success(response.message, "Content Added to Watchlist")
       }, responseError => {
-        this.toastr.error(responseError.error.message,"Error !")
+        this.toastr.error(responseError.error.message, "Error !")
       })
     }
     else {
-      this.toastr.info("You must Login","Info !")
+      this.toastr.info("You must Login", "Info !")
       this.router.navigate(["/login"]);
     }
   }
-  
+
 
   scrollToTop(): void {
     window.scrollTo(0, 0);

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { WatchList } from 'src/app/models/watchList';
 import { WatchListDto } from 'src/app/models/watchListDto';
@@ -20,7 +21,7 @@ export class WathListComponent implements OnInit {
   posterURL = "https://localhost:44341/images/"
   change: boolean = true;
 
-  constructor(private toastr: ToastrService, private authService: AuthService, private userService: UserService, private watchListService: WatchListService) { }
+  constructor(private toastr: ToastrService, private authService: AuthService, private userService: UserService, private watchListService: WatchListService, private router: Router, private route: ActivatedRoute) { }
 
 
   ngOnInit(): void {
@@ -44,14 +45,22 @@ export class WathListComponent implements OnInit {
   removeContent(id: number) {
     this.watchListService.remove(id).subscribe(response => {
       this.toastr.success(response.message, "Succesful !")
-      window.location.reload();
     })
+    window.location.reload();
   }
 
   changeWatched(watchList: WatchList) {
     this.watchListService.changeWatched(watchList).subscribe(response => {
       this.toastr.success(response.message, "Succesful !")
     })
+    window.location.reload();
   }
 
+  watchListFunc() {
+    this.change = true;
+  }
+
+  watchedListFunc() {
+    this.change = false;
+  }
 }

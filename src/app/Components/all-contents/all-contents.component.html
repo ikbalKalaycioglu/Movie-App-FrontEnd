@@ -6,7 +6,7 @@
 
 <div class="container" *ngIf="dataLoaded == true">
 
-	<div class="movie-card" *ngFor="let contentDetail of contentDetail | searchFilter:filterText">
+	<div class="movie-card" *ngFor="let contentDetail of contentDetail | searchFilter:filterText | paginate: { itemsPerPage: itemPerPage, currentPage: p ,totalItems:totalContent}">
 		<div class="movie-header">
 			<a routerLink="/content/{{contentDetail.id}}"><img [src]="contentDetail.posterPath !== null ? posterURL+contentDetail.posterPath :'https://localhost:44341/images/defaultImage.jpg'">
 				<div class="center">
@@ -20,7 +20,7 @@
 				<a routerLink="/content/{{contentDetail.id}}">
 					<h3 class="movie-title">{{contentDetail.title}}</h3>
 				</a>
-				<a routerLink="/content/{{contentDetail.id}}"><i class="bi bi-info-circle"></i></a>
+				<a (click)="addToWatchList(contentDetail.id)"><i class="bi bi-bookmark-plus"></i></a>
 
 			</div>
 			<div class="movie-info">
@@ -42,6 +42,10 @@
 		<!--movie-content-->
 	</div>
 </div>
+<div class="mt-8 py-5 flex justify-center items-center text-center">
+	<pagination-controls class="my-pagination" (pageChange)="p = $event"></pagination-controls>
+</div>
+
 <!--movie-card-->
 
 <!--DataLoaded False ise-->

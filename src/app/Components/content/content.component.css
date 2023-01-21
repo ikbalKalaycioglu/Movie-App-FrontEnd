@@ -96,16 +96,16 @@ a h3:hover {
     display: table-cell;
 }
 
+
+.bi-emoji-frown{
+    float: right;
+    font-size: 28px;
+}
 .bi-bookmark-plus {
     float: right;
     font-size: 28px;
     color: orange;
 }
-.bi-emoji-frown{
-    float: right;
-    font-size: 28px;
-}
-
 .bi-bookmark-plus:hover{
     cursor: pointer;
     color: yellow;
@@ -326,4 +326,12 @@ a h3:hover {
     text-transform: inherit;
     letter-spacing: .00735rem;
     color: orange;
+}
+
+.my-pagination ::ng-deep .ngx-pagination .current {
+    --size: 32px;
+    font-size: 13px;
+    border-radius: 6px;
+    background: #202020;
+    cursor: pointer;
 }

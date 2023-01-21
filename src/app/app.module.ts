@@ -39,6 +39,8 @@ import { DirectorUpdateComponent } from './Components/admin/director-update/dire
 import { DirectorDeleteComponent } from './Components/admin/director-delete/director-delete.component';
 import { SafePipe } from './pipes/safe.pipe';
 import { WathListComponent } from './Components/user/wath-list/wath-list.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { Top100MoviesComponent } from './Components/top100-movies/top100-movies.component';
 
 
 @NgModule({
@@ -72,6 +74,7 @@ import { WathListComponent } from './Components/user/wath-list/wath-list.compone
     DirectorDeleteComponent,
     SafePipe,
     WathListComponent,
+    Top100MoviesComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,6 +82,7 @@ import { WathListComponent } from './Components/user/wath-list/wath-list.compone
     NgbModule,
     HttpClientModule,
     FormsModule,
+    NgxPaginationModule,
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     BrowserAnimationsModule,
     ToastrModule.forRoot({

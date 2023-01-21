@@ -1,32 +1,62 @@
-<div class="container-fluid upnavbar">
-    <div class="row text-center">
-        <div class="col-md-6 bg-warning"><a><span class="fs-4">Watch List</span></a></div>
-        <div class="col-md-6 bg-danger"><a><span class="fs-4">Watched List</span></a></div>
+<header id="header">
+	<nav class="links" style="--items: 2;">
+		<a (click)="watchListFunc()" routerLink="/watchList" routerLinkActive="active">Watch List</a>
+		<a (click)="watchedListFunc()">Watched List</a>
+		<span class="line"></span>
+	</nav>
+</header>
+<div *ngIf="change">
+    <div class="container my-3 bg-dark" *ngFor="let content of notWatchedList">
+        <div class="row">
+            <div class="col-md-1 route">
+                <input class="form-check-input form-check" (change)="changeWatched(content)" type="checkbox"  id="checkboxNoLabel" [value]="false">
+            </div>
+            <div class="col-md-1 route">
+                <i data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="bi bi-trash" (click)="deletedId = content.id"></i>
+            </div>
+            <div class="col-md-2 section"><a><img class="poster py-3" [src]="content.posterPath !== null ? posterURL+content.posterPath :'https://localhost:44341/images/defaultImage.jpg'"></a></div>
+            <div class="col-md-7 p-4">
+                <div class="row title">
+                    <h3>{{content.title}}</h3>
+                </div>
+                <div class="row imdb">
+                    <span>Imdb Rating : <span> {{content.imDbRating}} <i class="bi bi-star-fill"></i></span></span>
+                </div>
+                <div class="row description">
+                    <span>{{content.description}}</span>
+                </div>
+            </div>
+            <div class="col-md-1 gotoroute">
+                <a routerLink="/content/{{content.contentId}}"><i class="bi bi-arrow-right"></i></a>
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="container my-3 bg-dark" *ngFor="let content of notWatchedList">
-    <div class="row">
-        <div class="col-md-1 route">
-            <input class="form-check-input form-check" type="checkbox" id="checkboxNoLabel" value="true">
-        </div>
-        <div class="col-md-1 route">
-            <i data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="bi bi-trash" (click)="deletedId = content.id"></i>
-        </div>
-        <div class="col-md-2 section"><a><img class="poster py-3" [src]="content.posterPath !== null ? posterURL+content.posterPath :'https://localhost:44341/images/defaultImage.jpg'"></a></div>
-        <div class="col-md-7 p-4">
-            <div class="row title">
-                <h3>{{content.title}}</h3>
+<div *ngIf="!change">
+    <div class="container my-3 bg-dark" *ngFor="let content of watchedList">
+        <div class="row">
+            <div class="col-md-1 route">
+                <input class="form-check-input form-check" (change)="changeWatched(content)" type="checkbox" id="checkboxNoLabel">
             </div>
-            <div class="row imdb">
-                <span>Imdb Rating : <span> {{content.imDbRating}} <i class="bi bi-star-fill"></i></span></span>
+            <div class="col-md-1 route">
+                <i data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="bi bi-trash" (click)="deletedId = content.id"></i>
             </div>
-            <div class="row description">
-                <span>{{content.description}}</span>
+            <div class="col-md-2 section"><a><img class="poster py-3" [src]="content.posterPath !== null ? posterURL+content.posterPath :'https://localhost:44341/images/defaultImage.jpg'"></a></div>
+            <div class="col-md-7 p-4">
+                <div class="row title">
+                    <h3>{{content.title}}</h3>
+                </div>
+                <div class="row imdb">
+                    <span>Imdb Rating : <span> {{content.imDbRating}} <i class="bi bi-star-fill"></i></span></span>
+                </div>
+                <div class="row description">
+                    <span>{{content.description}}</span>
+                </div>
             </div>
-        </div>
-        <div class="col-md-1 gotoroute">
-            <a routerLink="/content/{{content.contentId}}"><i class="bi bi-arrow-right"></i></a>
+            <div class="col-md-1 gotoroute">
+                <a routerLink="/content/{{content.contentId}}"><i class="bi bi-arrow-right"></i></a>
+            </div>
         </div>
     </div>
 </div>

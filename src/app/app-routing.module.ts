@@ -23,34 +23,36 @@ import { ProfileComponent } from './Components/profile/profile.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { StarDetailComponent } from './Components/star-detail/star-detail.component';
 import { StarComponent } from './Components/star/star.component';
+import { Top100MoviesComponent } from './Components/top100-movies/top100-movies.component';
 import { WathListComponent } from './Components/user/wath-list/wath-list.component';
 import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
-  { path: "", pathMatch: "full", component: ContentComponent},
+  { path: "", pathMatch: "full", component: ContentComponent },
   { path: "allcontent", component: AllContentsComponent },
   { path: "stars", component: StarComponent },
   { path: "directors", component: DirectorComponent },
+  { path: "top_100_movies", component: Top100MoviesComponent },
   { path: "content/:contentId", component: ContentDetailComponent },
-  { path: "category/:categoryId", component: ContentComponent},
-  { path: "directordetail/:directorId", component: DirectorDetailComponent},
-  { path: "stardetail/:starId", component: StarDetailComponent},
+  { path: "category/:categoryId", component: ContentComponent },
+  { path: "directordetail/:directorId", component: DirectorDetailComponent },
+  { path: "stardetail/:starId", component: StarDetailComponent },
   { path: "register", component: RegisterComponent },
   { path: "login", component: LoginComponent },
-  { path: "watchList", component: WathListComponent , canActivate:[LoginGuard] },
-  { path: "profile", component: ProfileComponent , canActivate: [LoginGuard]},
-  { path: "addcontent", component: ContentAddComponent, canActivate: [LoginGuard]},
-  { path: "updatecontent", component: ContentUpdateComponent, canActivate: [LoginGuard]},
-  { path: "deletecontent", component: ContentDeleteComponent, canActivate: [LoginGuard]},
-  { path: "addcategory", component: CategoryAddComponent, canActivate: [LoginGuard]},
-  { path: "updatecategory", component: CategoryUpdateComponent, canActivate: [LoginGuard]},
-  { path: "deletecategory", component: CategoryDeleteComponent, canActivate: [LoginGuard]},
-  { path: "addstar", component: StarAddComponent, canActivate: [LoginGuard]},
-  { path: "updatestar", component: StarUpdateComponent, canActivate: [LoginGuard]},
-  { path: "deletestar", component: StarDeleteComponent, canActivate: [LoginGuard]},
-  { path: "adddirector", component: DirectorAddComponent, canActivate: [LoginGuard]},
-  { path: "updatedirector", component: DirectorUpdateComponent, canActivate: [LoginGuard]},
-  { path: "deletedirector", component: DirectorDeleteComponent, canActivate: [LoginGuard]},
+  { path: "watchList", component: WathListComponent, canActivate: [LoginGuard] },
+  { path: "profile", component: ProfileComponent, canActivate: [LoginGuard] },
+  { path: "addcontent", component: ContentAddComponent, canActivate: [LoginGuard] },
+  { path: "updatecontent", component: ContentUpdateComponent, canActivate: [LoginGuard] },
+  { path: "deletecontent", component: ContentDeleteComponent, canActivate: [LoginGuard] },
+  { path: "addcategory", component: CategoryAddComponent, canActivate: [LoginGuard] },
+  { path: "updatecategory", component: CategoryUpdateComponent, canActivate: [LoginGuard] },
+  { path: "deletecategory", component: CategoryDeleteComponent, canActivate: [LoginGuard] },
+  { path: "addstar", component: StarAddComponent, canActivate: [LoginGuard] },
+  { path: "updatestar", component: StarUpdateComponent, canActivate: [LoginGuard] },
+  { path: "deletestar", component: StarDeleteComponent, canActivate: [LoginGuard] },
+  { path: "adddirector", component: DirectorAddComponent, canActivate: [LoginGuard] },
+  { path: "updatedirector", component: DirectorUpdateComponent, canActivate: [LoginGuard] },
+  { path: "deletedirector", component: DirectorDeleteComponent, canActivate: [LoginGuard] },
   { path: "**", component: PageNotFoundComponent }
 ];
 

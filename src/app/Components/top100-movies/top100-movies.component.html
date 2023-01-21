@@ -1,0 +1,22 @@
+<div class="container mt-3">
+    <table class="table table-dark table-striped table-hover align-middle">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th colspan="2">Title & Date</th>
+                <th>Popularity</th>
+                <th class="text-center">IMDb Rating</th>
+                <th class="text-center">Watch List</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of topMovies">
+                <td><a><img [src]="posterUrl+item.poster_path" alt=""></a></td>
+                <td colspan="2">{{item.title}}</td>
+                <td>{{item.popularity.toFixed(2)}}</td>
+                <td class="text-center">{{item.vote_average}}</td>
+                <td class="text-center"><i class="bi bi-bookmark-plus"></i></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
