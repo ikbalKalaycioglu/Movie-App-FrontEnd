@@ -9,6 +9,7 @@ import { RapidApiService } from 'src/app/services/rapid-api.service';
 })
 export class Top100MoviesComponent implements OnInit {
 
+  dataLoaded: boolean = false;
 
   topMovies: Result[] = [];
   posterUrl: string = "https://image.tmdb.org/t/p/w92/";
@@ -23,7 +24,7 @@ export class Top100MoviesComponent implements OnInit {
   getTopMovies() {
     this.rapidApi.imdbTopMovies().subscribe(response => {
       this.topMovies = response.results
-      console.log(this.topMovies)
+      this.dataLoaded = true;
     })
   }
 

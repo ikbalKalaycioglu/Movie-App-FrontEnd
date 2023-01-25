@@ -1,3 +1,4 @@
+import { SocialUser } from '@abacritt/angularx-social-login/public-api';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -26,6 +27,11 @@ export class AuthService {
 
   login(loginModel: LoginModel): Observable<SingleResponseModel<TokenModel>> {
     let newPath = this.apiURL + "login"
+    return this.httpClient.post<SingleResponseModel<TokenModel>>(newPath, loginModel)
+  }
+
+  googleLogin(loginModel: SocialUser): Observable<SingleResponseModel<TokenModel>> {
+    let newPath = this.apiURL + "google-login"
     return this.httpClient.post<SingleResponseModel<TokenModel>>(newPath, loginModel)
   }
 

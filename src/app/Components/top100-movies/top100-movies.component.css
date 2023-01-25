@@ -19,3 +19,13 @@ td {
     font-size: 20px;
     margin: 10px;
 }
+
+.container-div{
+    text-align: justify;
+}
+
+.spinner{
+    position: relative;
+    margin: auto;
+    
+}

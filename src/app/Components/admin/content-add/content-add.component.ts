@@ -50,7 +50,6 @@ export class ContentAddComponent implements OnInit {
     this.contentAddForm.get('imDbRating')?.setValue(this.imdbRating.value);
     if (!this.contentAddForm.valid) {
       this.toastr.error("Formunuz hatalı", "Geçersiz form");
-      console.log(this.contentImagesFiles)
     } else {
       let contentModel = Object.assign({}, this.contentAddForm.value)
       this.contentService.add(contentModel).subscribe(response => {

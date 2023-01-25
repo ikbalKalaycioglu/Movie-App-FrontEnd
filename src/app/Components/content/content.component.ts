@@ -28,9 +28,9 @@ export class ContentComponent implements OnInit {
   dataLoaded = false;
   windowScrolled = false;
 
-  totalContent: any;
   p: number = 1;
   itemPerPage: number = 8;
+  
 
   posterURL = "https://localhost:44341/images/"
 
@@ -59,7 +59,6 @@ export class ContentComponent implements OnInit {
       this.contentDetail = response.data
       this.dataLoaded = true;
     })
-    this.totalContent = this.contentDetail.length;
   }
 
 

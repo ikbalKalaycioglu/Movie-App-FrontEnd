@@ -3,10 +3,10 @@
 body {
   background: #000000;
   font-family: 'Arimo', Arial, sans-serif;
-  align-items: center;
-  font-weight: 400;
-  font-size: 14px;
+  margin: 0;
   color: white;
+  height: 100%;
+  width: 100%;
 }
 
 * {
@@ -28,5 +28,5 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(214, 149, 27); 
+  background: rgb(214, 149, 27);
 }

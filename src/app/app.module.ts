@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './Components/footer/footer.component';
 import { ContentComponent } from './Components/content/content.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -41,6 +39,13 @@ import { SafePipe } from './pipes/safe.pipe';
 import { WathListComponent } from './Components/user/wath-list/wath-list.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Top100MoviesComponent } from './Components/top100-movies/top100-movies.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
+import {MatDividerModule} from '@angular/material/divider';
+
 
 
 @NgModule({
@@ -79,11 +84,17 @@ import { Top100MoviesComponent } from './Components/top100-movies/top100-movies.
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule,
     HttpClientModule,
     FormsModule,
+    NgbModule,
+    MatButtonModule,
+    MatDividerModule,
+    MatIconModule,
+    MatPaginatorModule,
+    MatProgressSpinnerModule,
     NgxPaginationModule,
-    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
+    SocialLoginModule,
+    ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 3000,
@@ -98,7 +109,25 @@ import { Top100MoviesComponent } from './Components/top100-movies/top100-movies.
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
-    JwtHelperService
+    JwtHelperService,
+    {
+      provide: 'SocialAuthServiceConfig', useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider('266378806369-9tb21cto73n7303pnpuqboe842eh5fah.apps.googleusercontent.com')
+          },
+          // {
+          //   id: FacebookLoginProvider.PROVIDER_ID,
+          //   provider: new FacebookLoginProvider('clientId')
+          // }
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
+    },
   ],
   bootstrap: [AppComponent]
 })

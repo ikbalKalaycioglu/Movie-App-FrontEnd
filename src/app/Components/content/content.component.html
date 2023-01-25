@@ -1,5 +1,4 @@
 <div class="container">
-
 	<!--Slide Show -->
 	<div class="slide-show">
 		<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="1800">
@@ -36,8 +35,8 @@
 
 <div class="container" *ngIf="dataLoaded == true">
 
-	<div class="movie-card" *ngFor="let contentDetail of contentDetail | paginate: { itemsPerPage: itemPerPage, currentPage: p ,totalItems:totalContent}">
-		<div class="movie-header" >
+	<div class="movie-card" *ngFor="let contentDetail of contentDetail | paginate: { itemsPerPage: itemPerPage, currentPage: p}">
+		<div class="movie-header">
 			<a routerLink="/content/{{contentDetail.id}}"><img [src]="contentDetail.posterPath !== null ? posterURL+contentDetail.posterPath :'https://localhost:44341/images/defaultImage.jpg'">
 				<div class="center">
 					<i class="bi bi-play"></i>
@@ -71,12 +70,15 @@
 		<!--movie-content-->
 	</div>
 </div>
+
+<!--Paginations-->
+
 <div class="mt-8 py-5 flex justify-center items-center text-center">
 	<pagination-controls class="my-pagination" (pageChange)="p = $event"></pagination-controls>
 </div>
-	<!--movie-card-->
+<!--movie-card-->
 
-	<!--DataLoaded False ise-->
+<!--DataLoaded False ise-->
 <div class="container" *ngIf="dataLoaded == false">
 	<div class="movie-card" aria-hidden="true" *ngFor="let index of [0,1,2,3,4,5,6,7,8,9,10,11]">
 		<div class="movie-header placeholder-wave bg-secondary">
