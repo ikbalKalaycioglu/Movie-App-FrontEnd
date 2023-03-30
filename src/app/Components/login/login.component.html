@@ -12,15 +12,28 @@
         <label for="password" class="placeholderr">Password</label>
     </div>
     <div class="container ic2">
-        <a class="register" routerLink="/register">Not a User ? Sign-Up</a>
+        <ngx-recaptcha2 siteKey="6Lf-uLYkAAAAAFujU7Nkfm1hym0Wv0gHHVntXUlk" formControlName="recaptcha"></ngx-recaptcha2>
     </div>
+    <div class="container mt-3">
+        <asl-google-signin-button type='standard' size='medium' shape="pill" theme="filled_black" text="signin_with"></asl-google-signin-button>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="container my-3">
+                <a class="register" routerLink="/register">Sign-Up</a>
+            </div>
+        </div>
+        <div class="col">
+            <div class="container my-3">
+                <a class="register" routerLink="/forgot-password">Forgot Password</a>
+            </div>
+        </div>
+    </div>
+
 
     <!--google login-->
 
-    <div class="container my-3">
-        <asl-google-signin-button type='standard' size='medium' shape="pill" theme="filled_black" text="signin_with"></asl-google-signin-button>
-    </div>
-
+    
 
     <button type="text" (click)="login()" class="submit">submit</button>
 

@@ -45,6 +45,12 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
 import {MatDividerModule} from '@angular/material/divider';
+import { NgxCaptchaModule } from 'ngx-captcha';
+import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
+import { RecoverPasswordComponent } from './Components/recover-password/recover-password.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { CommentsComponent } from './Components/admin/comments/comments.component';
+import { SearchCommentPipe } from './pipes/search-comment.pipe';
 
 
 
@@ -80,6 +86,10 @@ import {MatDividerModule} from '@angular/material/divider';
     SafePipe,
     WathListComponent,
     Top100MoviesComponent,
+    ForgotPasswordComponent,
+    RecoverPasswordComponent,
+    CommentsComponent,
+    SearchCommentPipe,
   ],
   imports: [
     BrowserModule,
@@ -92,16 +102,17 @@ import {MatDividerModule} from '@angular/material/divider';
     MatIconModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
+    NgxCaptchaModule,
     NgxPaginationModule,
     SocialLoginModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     BrowserAnimationsModule,
+    NgxSpinnerModule.forRoot({type:'ball-climbing-dot'}),
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-bottom-right',
       preventDuplicates: false,
-      closeButton: false,
-      progressAnimation: 'increasing',
+      closeButton: true,
       progressBar: true,
       disableTimeOut: false
     })
@@ -123,9 +134,6 @@ import {MatDividerModule} from '@angular/material/divider';
           //   provider: new FacebookLoginProvider('clientId')
           // }
         ],
-        onError: (err) => {
-          console.error(err);
-        }
       } as SocialAuthServiceConfig,
     },
   ],

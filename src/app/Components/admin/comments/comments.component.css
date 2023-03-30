@@ -1,0 +1,39 @@
+.container-text {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    margin-top: 2vh;
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: center;
+}
+th{
+    color: orange;
+    font-size: 24px;
+}
+
+.bi-bookmark-plus {
+    font-size: 28px;
+    color: orange;
+}
+
+.bi-bookmark-plus:hover{
+    cursor: pointer;
+    color: yellow;
+}
+
+td {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 20px;
+    margin: 10px;
+}
+
+.container-div{
+    text-align: justify;
+}
+
+.spinner{
+    position: relative;
+    margin: auto;
+    
+}

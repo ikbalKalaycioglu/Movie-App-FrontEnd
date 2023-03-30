@@ -5,7 +5,6 @@
 </div>
 
 <div class="container" *ngIf="dataLoaded == true">
-
 	<div class="movie-card" *ngFor="let contentDetail of contentDetail | searchFilter:filterText | paginate: { itemsPerPage: itemPerPage, currentPage: p ,totalItems:totalContent}">
 		<div class="movie-header">
 			<a routerLink="/content/{{contentDetail.id}}"><img [src]="contentDetail.posterPath !== null ? posterURL+contentDetail.posterPath :'https://localhost:44341/images/defaultImage.jpg'">

@@ -1,15 +1,16 @@
+
 <header id="header">
-	<nav class="links" style="--items: 2;">
-		<a (click)="watchListFunc()" routerLink="/watchList" routerLinkActive="active">Watch List</a>
-		<a (click)="watchedListFunc()">Watched List</a>
-		<span class="line"></span>
-	</nav>
+    <nav class="links" style="--items: 2;">
+        <a (click)="watchListFunc()" routerLink="/watchList" routerLinkActive="active">Watch List</a>
+        <a (click)="watchedListFunc()">Watched List</a>
+        <span class="line"></span>
+    </nav>
 </header>
 <div *ngIf="change">
     <div class="container my-3 bg-dark" *ngFor="let content of notWatchedList">
         <div class="row">
             <div class="col-md-1 route">
-                <input class="form-check-input form-check" (change)="changeWatched(content)" type="checkbox"  id="checkboxNoLabel" [value]="false">
+                <input class="form-check-input form-check" (change)="changeWatched(content)" type="checkbox" id="checkboxNoLabel" [value]="false">
             </div>
             <div class="col-md-1 route">
                 <i data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="bi bi-trash" (click)="deletedId = content.id"></i>
@@ -50,6 +51,7 @@
                 <div class="row imdb">
                     <span>Imdb Rating : <span> {{content.imDbRating}} <i class="bi bi-star-fill"></i></span></span>
                 </div>
+                
                 <div class="row description">
                     <span>{{content.description}}</span>
                 </div>

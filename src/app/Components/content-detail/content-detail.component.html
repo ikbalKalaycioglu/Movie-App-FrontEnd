@@ -112,9 +112,9 @@
   </form>
 </div>
 
-<div class="container">
-  <div class="card text-bg-dark mb-3" *ngFor="let item of comment| slice:0:(commentLenght*3)">
-    <div class="card-body">
+<div class="container" *ngFor="let item of comment| slice:0:(commentLenght*3)">
+  <div class="card text-bg-dark mb-3"  *ngIf="item.display" >
+    <div class="card-body" >
       <div class="row">
         <div class="col-md-1">
           <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" class="rounded-circle shadow-4" style="width: 100px;" alt="Avatar" />

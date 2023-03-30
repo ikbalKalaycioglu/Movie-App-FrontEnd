@@ -151,6 +151,7 @@ export class ContentDetailComponent implements OnInit {
     this.commentService.getByContentId(contentId).subscribe(response => {
       this.comment = response.data
     })
+    
   }
 
 
